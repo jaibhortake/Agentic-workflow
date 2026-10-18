@@ -3,7 +3,7 @@
 A lean, stack-agnostic workflow for building production-grade software with AI coding agents (Claude Code first; Cursor, Copilot, Codex and Gemini CLI via `AGENTS.md`).
 
 It combines:
-- **[structured-agentic-workflow](https://github.com/nikhilw/structured-agentic-workflow)**: brainstorm → plan → build → review → verify, plans saved as files, evidence-based "done", drift audit.
+- **[structured-agentic-workflow](https://github.com/nikhilw/structured-agentic-workflow)**: brainstorm → plan → build → review → verify, plans saved as files, evidence-based "done", drift verdicts, removal tables, build halt reports, impact tracing, rework briefs, compaction briefs, GitHub backlog.
 - **[superpowers](https://github.com/obra/superpowers)**-style TDD and systematic debugging.
 - **[Caveman](https://github.com/JuliusBrussee/caveman)**-style terse output to cut tokens during builds.
 - **[Anthropic's Claude Code best practices](https://www.anthropic.com/engineering/claude-code-best-practices)**: plan before coding, verify your own work, short CLAUDE.md, subagents to protect context.
@@ -89,8 +89,9 @@ Then run `/security-check` and `/pr`.
 | `/security-check` | Secrets, injection, authz, data and dependency checks |
 | `/pr` | PR title and description from the plan and verify evidence |
 | `/triage` | Suggests the next task from handoff, plans and issues |
+| `/backlog` | GitHub Issues: file bugs/features, link plans, close after verify |
 | `/models` | Show or change the model per role |
-| `/handoff` | Compact resume brief for a new session or teammate |
+| `/handoff [compact]` | Compact resume brief for a new session or teammate |
 | `/terse on/off` | Toggle terse output (on by default during build) |
 | `/setup-project` | Generate this project's `CLAUDE.md` |
 
