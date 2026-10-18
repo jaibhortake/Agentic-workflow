@@ -25,7 +25,22 @@ git clone https://github.com/jaibhortake/Agentic-workflow.git
 /plugin install agentic-workflow@agentic-workflow
 ```
 
-Then open your project in Claude Code and run **`/setup-project`**. It scans the repo and fills `CLAUDE.md` with your stack, commands and conventions.
+## Models
+
+Nothing is hard-coded: every agent defaults to `inherit` (your current session model). Pick per role:
+
+```bash
+./Agentic-workflow/install.sh my-app --build sonnet --review opus --explore haiku
+.\Agentic-workflow\install.ps1 -Project my-app -Build sonnet -Review opus -Explore haiku
+# or later, inside Claude Code:
+/models build=sonnet review=opus explore=haiku
+```
+
+Values: `inherit`, `opus`, `sonnet`, `haiku`, `fable`, or any full model id. The planning model is just your session model (`/model`). Re-running the installer keeps your choices. A strong model for plan/review and a cheaper one for build/explore usually saves the most, but that's your call.
+
+## First run
+
+Open your project in Claude Code and run **`/setup-project`**. It scans the repo and fills `CLAUDE.md` with your stack, commands and conventions.
 
 The installer adds:
 
@@ -34,10 +49,10 @@ your-project/
   AGENTS.md            # workflow rules, read by all agent tools (in a marked block, safe to re-run)
   CLAUDE.md            # project facts, imports AGENTS.md (filled by /setup-project)
   .claude/skills/      # workflow skills = slash commands
-  .claude/agents/      # builder (Sonnet), reviewer (Opus), explorer (Haiku)
-  .claude/hooks/       # guard.sh (blocks secrets edits + destructive commands), verify-on-stop.sh
-  .claude/settings.json# wires the hooks (only created if you don't have one)
-  .claude/workflow.json# testCommand the Stop hook runs before "done"
+  .claude/agents/      # builder, reviewer, explorer (model: your choice, see "Models")
+  .claude/hooks/       # guard, format-on-edit, verify-on-stop
+  .claude/settings.json # wires the hooks (only created if you don't have one)
+  .claude/workflow.json # testCommand, formatCommand, baseBranch, models
   .claude/presets/     # stack hints for /setup-project (node, python, java, go, dotnet)
   docs/plans/{new,active,done}/
   docs/decisions/
@@ -57,8 +72,9 @@ Start any task with `/workflow <what you want>`. It sizes the task and picks a p
 
 Then run `/security-check` and `/pr`.
 
-**Hooks** enforce two things automatically:
+**Hooks** enforce three things automatically (rules in markdown are advice; hooks always run):
 - `guard.sh` blocks edits to `.env` and key files and blocks `git push --force`, `reset --hard`, `rm -rf /` and similar.
+- `format-on-edit.sh` runs `formatCommand` on each edited file.
 - `verify-on-stop.sh` runs `testCommand` when the agent tries to finish after code changes; failing tests send it back to fix them.
 
 | Command | What it does |
@@ -73,14 +89,17 @@ Then run `/security-check` and `/pr`.
 | `/security-check` | Secrets, injection, authz, data and dependency checks |
 | `/pr` | PR title and description from the plan and verify evidence |
 | `/triage` | Suggests the next task from handoff, plans and issues |
+| `/models` | Show or change the model per role |
 | `/handoff` | Compact resume brief for a new session or teammate |
 | `/terse on/off` | Toggle terse output (on by default during build) |
 | `/setup-project` | Generate this project's `CLAUDE.md` |
 
 ## Saving tokens
 
-- The plan file is the handoff, so Opus plans and reviews while Sonnet builds.
-- The `explorer` subagent (Haiku) runs wide searches and returns only conclusions.
+- The plan file is the handoff, so a cheaper build model can follow it (if you choose one).
+- The `explorer` subagent runs wide searches and returns only conclusions.
+- Build each approved plan in a fresh session (`/clear`); the plan carries the context.
+- Corrected twice on the same thing? Start fresh with a sharper prompt.
 - Terse mode during build and debug. Plans, reviews and PR text stay readable.
 - `CLAUDE.md` is kept to about 60 lines; skills load only when used.
 - Tests are scoped during a phase, with the full suite only at `/verify`.
@@ -97,5 +116,7 @@ Then run `/security-check` and `/pr`.
 - Commit `AGENTS.md`, `CLAUDE.md`, `.claude/` and `docs/` so everyone shares them.
 - Personal preferences go in `CLAUDE.local.md`, which the installer gitignores.
 - Review plans in `docs/plans/new/` like code; moving one to `active/` means it's approved.
+- Parallel work: one git worktree per task (`claude --worktree` or `git worktree add`) so sessions don't collide.
+- Run `/fewer-permission-prompts` after a few sessions to allowlist the safe commands you keep approving.
 
 MIT License.

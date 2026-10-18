@@ -27,6 +27,9 @@ Decision doc: docs/decisions/… (L only)
 - Done when: <command> passes; <AC ids> covered
 ### Phase 2: …
 
+## End-to-end check
+- <one command or manual scenario that proves the whole feature works>
+
 ## Removals
 - <code removed> → replaced by <x>; callers checked: <how>
 
@@ -41,4 +44,6 @@ Rules:
 - Each phase is independently buildable and testable; aim ≤ ~300 changed lines per phase.
 - Name exact files and functions. No "etc.", no "as appropriate".
 - Every AC maps to at least one test.
+- State what is out of scope.
+- After approval, build in a **fresh session** (`/clear`): the plan carries the context, the brainstorm chat doesn't need to.
 - Unknowns → resolve now (ask) or add a spike phase. Don't leave them for the builder.

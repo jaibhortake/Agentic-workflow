@@ -21,5 +21,8 @@
 ## Conventions
 - TODO (naming, error handling, logging, branch/commit format)
 
+## Compaction
+- When compacting, keep: active plan path + current phase, modified files list, test commands, open decisions.
+
 ## Gotchas
 - TODO (things that broke before, env quirks, never-touch areas)

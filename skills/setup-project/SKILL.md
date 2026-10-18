@@ -1,6 +1,7 @@
 ---
 name: setup-project
 description: Scan the current repo and fill CLAUDE.md with this project's stack, commands, layout, conventions and gotchas. Run once after install, and again when the stack changes.
+disable-model-invocation: true
 ---
 
 # Setup project
@@ -13,5 +14,8 @@ description: Scan the current repo and fill CLAUDE.md with this project's stack,
 5. Ask the user (one short list) for what you can't infer: gotchas, never-touch areas, base branch, deploy notes.
 6. Fill the TODOs in `CLAUDE.md`. Keep it ≤ ~60 lines. Remove empty sections. Don't paste docs — link them.
 7. Run the test command once to confirm it works; fix the entry if not.
-8. Write `.claude/workflow.json`: `{"testCommand": "<fast full test command>", "baseBranch": "<base>"}`. The Stop hook runs `testCommand` before the agent may finish after code changes, so keep it fast. Leave it empty to disable.
+8. Fill `.claude/workflow.json` (keep existing `models`):
+   - `testCommand`: fast full test command. The Stop hook runs it before the agent may finish after code changes. Empty = off.
+   - `formatCommand`: formatter for one file, `{file}` = path (e.g. `npx prettier --write {file}`, `ruff format {file}`, `gofmt -w {file}`). Runs after every edit. Empty = off.
+   - `baseBranch`.
 9. Ensure `docs/plans/{new,active,done}` and `docs/decisions` exist.

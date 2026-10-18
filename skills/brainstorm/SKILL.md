@@ -5,7 +5,7 @@ description: Explore approaches and challenge the design for a large (L) task be
 
 # Brainstorm
 
-No code in this phase.
+No code in this phase. In Claude Code, plan mode (Shift+Tab) enforces read-only.
 
 1. **Intent:** write the user's goal, success criteria, and out-of-scope in their words.
 2. **What exists** (use `explorer` subagent; report conclusions only):
@@ -14,7 +14,7 @@ No code in this phase.
    - What conventions must the solution follow?
 3. **Options:** 2–3 approaches. For each: how it works, pros, cons, risk, rough size.
 4. **Challenge:** failure modes, security, performance, migration/rollback, edge cases. For rule/logic changes, write a table: case | today's result | new result. Differing rows become test cases.
-5. **Ask** the user only the decisions that remain open. One short list.
+5. **Interview** the user on the decisions that remain open — the hard parts (edge cases, tradeoffs, UX, failure handling), not obvious ones. Use a structured question tool if available (e.g. AskUserQuestion); keep going until nothing is open.
 6. Save `docs/decisions/YYYY-MM-DD-<slug>.md`:
 
 ```

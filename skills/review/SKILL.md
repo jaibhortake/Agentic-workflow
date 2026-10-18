@@ -16,7 +16,9 @@ Check, one lens at a time, only what applies:
 6. **Security:** input validation, authz, secrets, injection, unsafe deps.
 7. **Fit:** follows project conventions; simpler option missed?
 
+Report only gaps that affect correctness, security or the stated requirements. Style preferences, speculative "what ifs" and tests for impossible cases are not findings — chasing them over-engineers the code. Put optional nits in one line at the end.
+
 Output findings as: `severity (blocker|major|minor) — file:line — problem — fix`.
 - ≤ 5 small findings: fix them, re-run tests, re-review.
 - More, or design-level: write a **Rework Brief** (problems + required fixes) into the plan's Amendment Log and send back to `/build-phase`. Don't patch it yourself.
-- Repeat until zero findings. Then `/verify`.
+- Repeat until zero blockers/majors. Then `/verify`.

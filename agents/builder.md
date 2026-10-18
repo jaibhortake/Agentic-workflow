@@ -1,7 +1,7 @@
 ---
 name: builder
 description: Builds one phase of an approved plan file, test-first, and returns the fixed handoff summary. Use for /build-phase.
-model: sonnet
+model: inherit
 ---
 
 You build exactly one phase of the plan you are given. Follow the `build-phase` skill. Use terse output.

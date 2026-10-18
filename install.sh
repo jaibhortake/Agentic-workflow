@@ -1,10 +1,22 @@
 #!/usr/bin/env bash
 # Install the agentic workflow into a project.
-# Usage: ./install.sh [project-dir]   (default: current dir). Re-run to update skills.
+# Usage: ./install.sh [project-dir] [--build <model>] [--review <model>] [--explore <model>]
+#   project-dir defaults to the current dir. Models: inherit (default), opus, sonnet, haiku, fable, or a full id.
+#   Re-run to update skills; model choices already set in the project are kept unless you pass a flag.
 set -euo pipefail
 
 SRC="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-DEST="$(cd "${1:-.}" && pwd)"
+TARGET="."; M_BUILD=""; M_REVIEW=""; M_EXPLORE=""
+while [ $# -gt 0 ]; do
+  case "$1" in
+    --build) M_BUILD="$2"; shift 2 ;;
+    --review) M_REVIEW="$2"; shift 2 ;;
+    --explore) M_EXPLORE="$2"; shift 2 ;;
+    -h|--help) sed -n '2,5p' "$0"; exit 0 ;;
+    *) TARGET="$1"; shift ;;
+  esac
+done
+DEST="$(cd "$TARGET" && pwd)"
 NAME="$(basename "$DEST")"
 MARK="<!-- agentic-workflow -->"
 
@@ -14,7 +26,13 @@ echo "Installing agentic-workflow into $DEST"
 
 mkdir -p "$DEST/.claude/skills" "$DEST/.claude/agents" "$DEST/.claude/hooks" "$DEST/.claude/presets"
 cp -R "$SRC/skills/." "$DEST/.claude/skills/"
-cp -R "$SRC/agents/." "$DEST/.claude/agents/"
+# Agents: keep the model line the project already chose, unless a flag overrides it.
+for a in builder:"$M_BUILD" reviewer:"$M_REVIEW" explorer:"$M_EXPLORE"; do
+  name="${a%%:*}"; want="${a#*:}"; f="$DEST/.claude/agents/$name.md"
+  [ -z "$want" ] && [ -f "$f" ] && want="$(sed -n 's/^model:[[:space:]]*//p' "$f" | head -1)"
+  cp "$SRC/agents/$name.md" "$f"
+  [ -n "$want" ] && sed -i.bak "s/^model:.*/model: $want/" "$f" && rm -f "$f.bak"
+done
 cp "$SRC/hooks/"*.sh "$DEST/.claude/hooks/"
 cp "$SRC/presets/"*.md "$DEST/.claude/presets/"
 [ -f "$DEST/.claude/workflow.json" ] || cp "$SRC/templates/workflow.json" "$DEST/.claude/workflow.json"

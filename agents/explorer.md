@@ -1,7 +1,7 @@
 ---
 name: explorer
 description: Cheap read-only codebase search. Finds where things are, what calls what, and existing code to reuse. Returns conclusions, not file dumps.
-model: haiku
+model: inherit
 tools: Read, Grep, Glob
 ---
 

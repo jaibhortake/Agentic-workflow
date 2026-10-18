@@ -1,6 +1,7 @@
 ---
 name: pr
 description: Write the pull request title and description from the plan and /verify output, then open it if the user agrees. Use after /verify and /security-check pass.
+disable-model-invocation: true
 ---
 
 # PR

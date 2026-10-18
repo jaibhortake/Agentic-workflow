@@ -1,6 +1,8 @@
 # Install the agentic workflow into a project.
-# Usage: .\install.ps1 [-Project <dir>]   (default: current dir). Re-run to update skills.
-param([string]$Project = ".")
+# Usage: .\install.ps1 [-Project <dir>] [-Build <model>] [-Review <model>] [-Explore <model>]
+#   Models: inherit (default), opus, sonnet, haiku, fable, or a full id.
+#   Re-run to update skills; model choices already set in the project are kept unless you pass a flag.
+param([string]$Project = ".", [string]$Build = "", [string]$Review = "", [string]$Explore = "")
 $ErrorActionPreference = "Stop"
 
 $Src  = $PSScriptRoot
@@ -15,7 +17,17 @@ Write-Host "Installing agentic-workflow into $Dest"
 
 New-Item -ItemType Directory -Force "$Dest\.claude\skills", "$Dest\.claude\agents", "$Dest\.claude\hooks", "$Dest\.claude\presets" | Out-Null
 Copy-Item "$Src\skills\*" "$Dest\.claude\skills\" -Recurse -Force
-Copy-Item "$Src\agents\*" "$Dest\.claude\agents\" -Recurse -Force
+# Agents: keep the model line the project already chose, unless a flag overrides it.
+foreach ($pair in @(@("builder", $Build), @("reviewer", $Review), @("explorer", $Explore))) {
+  $f = "$Dest\.claude\agents\$($pair[0]).md"; $want = $pair[1]
+  if (-not $want -and (Test-Path $f)) {
+    $m = Select-String -Path $f -Pattern '^model:\s*(.+)$' | Select-Object -First 1
+    if ($m) { $want = $m.Matches[0].Groups[1].Value.Trim() }
+  }
+  $text = [IO.File]::ReadAllText("$Src\agents\$($pair[0]).md")
+  if ($want) { $text = [regex]::Replace($text, '(?m)^model:.*$', "model: $want") }
+  [IO.File]::WriteAllText($f, $text, $Utf8)
+}
 Copy-Item "$Src\hooks\*.sh" "$Dest\.claude\hooks\" -Force
 Copy-Item "$Src\presets\*.md" "$Dest\.claude\presets\" -Force
 if (-not (Test-Path "$Dest\.claude\workflow.json")) { Copy-Item "$Src\templates\workflow.json" "$Dest\.claude\workflow.json" }

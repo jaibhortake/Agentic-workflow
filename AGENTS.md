@@ -22,6 +22,8 @@ Read by Claude Code, Cursor, Copilot, Codex, Gemini CLI. Keep short — every li
 - Delegate wide searches to a subagent; keep only its conclusion.
 - Terse mode during build (see `terse` skill). Plans, reviews and PR text stay in clear prose.
 - Long session or switching task → write a handoff (`handoff` skill), then start fresh.
+- Corrected twice on the same thing? Stop, start a fresh session with a sharper prompt that includes what was learned.
+- Scope every investigation; never "explore the whole codebase".
 
 ## Workflow commands (skills)
 Skill files: `.claude/skills/<name>/SKILL.md`. Tools without slash-command support: read the matching file when the step is reached.

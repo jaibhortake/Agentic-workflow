@@ -1,4 +1,6 @@
 {
   "testCommand": "",
-  "baseBranch": "main"
+  "formatCommand": "",
+  "baseBranch": "main",
+  "models": { "plan": "inherit", "build": "inherit", "review": "inherit", "explore": "inherit" }
 }
