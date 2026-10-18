@@ -1,0 +1,22 @@
+---
+name: review
+description: Independent fresh-eyes review of the changes against the plan and intent. Loops until no findings remain. Use after building M/L work.
+---
+
+# Review
+
+In Claude Code, run via the `reviewer` subagent (fresh context, strongest model). Input: plan path + `git diff` against the base branch. Don't read the build transcript; use the handoff summary.
+
+Check, one lens at a time, only what applies:
+1. **Intent:** does it do what the user asked — no more, no less?
+2. **Correctness:** logic errors, edge cases, null/empty, concurrency, error paths.
+3. **Impact:** who else calls the changed code? Anything broken, orphaned or duplicated?
+4. **Removals:** each deletion has a named replacement and no remaining callers.
+5. **Proof:** each acceptance criterion has a test; at least one test crosses the real seam (no mocks on the value path).
+6. **Security:** input validation, authz, secrets, injection, unsafe deps.
+7. **Fit:** follows project conventions; simpler option missed?
+
+Output findings as: `severity (blocker|major|minor) — file:line — problem — fix`.
+- ≤ 5 small findings: fix them, re-run tests, re-review.
+- More, or design-level: write a **Rework Brief** (problems + required fixes) into the plan's Amendment Log and send back to `/build-phase`. Don't patch it yourself.
+- Repeat until zero findings. Then `/verify`.
