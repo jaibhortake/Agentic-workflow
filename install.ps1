@@ -13,9 +13,20 @@ if ($Src -eq $Dest) { throw "Run this from (or point it at) your project, not th
 
 Write-Host "Installing agentic-workflow into $Dest"
 
-New-Item -ItemType Directory -Force "$Dest\.claude\skills", "$Dest\.claude\agents" | Out-Null
+New-Item -ItemType Directory -Force "$Dest\.claude\skills", "$Dest\.claude\agents", "$Dest\.claude\hooks", "$Dest\.claude\presets" | Out-Null
 Copy-Item "$Src\skills\*" "$Dest\.claude\skills\" -Recurse -Force
 Copy-Item "$Src\agents\*" "$Dest\.claude\agents\" -Recurse -Force
+Copy-Item "$Src\hooks\*.sh" "$Dest\.claude\hooks\" -Force
+Copy-Item "$Src\presets\*.md" "$Dest\.claude\presets\" -Force
+if (-not (Test-Path "$Dest\.claude\workflow.json")) { Copy-Item "$Src\templates\workflow.json" "$Dest\.claude\workflow.json" }
+
+# Hooks: install settings.json if absent; never overwrite an existing one.
+$settings = "$Dest\.claude\settings.json"
+if (-not (Test-Path $settings)) {
+  Copy-Item "$Src\templates\settings.json" $settings
+} elseif (-not (Select-String -Path $settings -Pattern "guard.sh" -Quiet)) {
+  Write-Host "NOTE: .claude/settings.json exists - merge the hooks from $Src\templates\settings.json manually."
+}
 
 foreach ($d in "docs\plans\new", "docs\plans\active", "docs\plans\done", "docs\decisions") {
   New-Item -ItemType Directory -Force "$Dest\$d" | Out-Null

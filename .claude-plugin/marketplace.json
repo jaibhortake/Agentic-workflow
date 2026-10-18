@@ -1,0 +1,11 @@
+{
+  "name": "agentic-workflow",
+  "owner": { "name": "Jai Bhortake" },
+  "plugins": [
+    {
+      "name": "agentic-workflow",
+      "source": "./",
+      "description": "Lean, stack-agnostic agentic dev workflow."
+    }
+  ]
+}

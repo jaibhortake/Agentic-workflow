@@ -18,6 +18,13 @@ git clone https://github.com/jaibhortake/Agentic-workflow.git
 .\Agentic-workflow\install.ps1 -Project path\to\your-project
 ```
 
+**Or as a Claude Code plugin** (skills, agents and hooks, updated with `/plugin update`):
+
+```
+/plugin marketplace add jaibhortake/Agentic-workflow
+/plugin install agentic-workflow@agentic-workflow
+```
+
 Then open your project in Claude Code and run **`/setup-project`**. It scans the repo and fills `CLAUDE.md` with your stack, commands and conventions.
 
 The installer adds:
@@ -28,6 +35,10 @@ your-project/
   CLAUDE.md            # project facts, imports AGENTS.md (filled by /setup-project)
   .claude/skills/      # workflow skills = slash commands
   .claude/agents/      # builder (Sonnet), reviewer (Opus), explorer (Haiku)
+  .claude/hooks/       # guard.sh (blocks secrets edits + destructive commands), verify-on-stop.sh
+  .claude/settings.json# wires the hooks (only created if you don't have one)
+  .claude/workflow.json# testCommand the Stop hook runs before "done"
+  .claude/presets/     # stack hints for /setup-project (node, python, java, go, dotnet)
   docs/plans/{new,active,done}/
   docs/decisions/
 ```
@@ -40,11 +51,15 @@ Start any task with `/workflow <what you want>`. It sizes the task and picks a p
 
 | Size | Example | Path |
 |---|---|---|
-| **S** | typo, config, 1-file fix | build → `/verify` |
-| **M** | one feature or bug | `/write-plan` → `/build-phase` → `/review` → `/verify` |
+| **S** | clear spec, ≤2 source files | build → `/verify` |
+| **M** | spec gaps, 3+ files, shared code | `/write-plan` → `/build-phase` → `/review` → `/verify` |
 | **L** | new module, schema/API/auth change | `/brainstorm` → `/write-plan` → `/build-phase` ×N → `/review` → `/verify` |
 
-Then run `/security-check` and open a PR.
+Then run `/security-check` and `/pr`.
+
+**Hooks** enforce two things automatically:
+- `guard.sh` blocks edits to `.env` and key files and blocks `git push --force`, `reset --hard`, `rm -rf /` and similar.
+- `verify-on-stop.sh` runs `testCommand` when the agent tries to finish after code changes; failing tests send it back to fix them.
 
 | Command | What it does |
 |---|---|
@@ -56,6 +71,8 @@ Then run `/security-check` and open a PR.
 | `/verify` | Fresh test/lint/build run, AC checklist, drift audit |
 | `/debug` | Reproduce → root cause → fix with a regression test |
 | `/security-check` | Secrets, injection, authz, data and dependency checks |
+| `/pr` | PR title and description from the plan and verify evidence |
+| `/triage` | Suggests the next task from handoff, plans and issues |
 | `/handoff` | Compact resume brief for a new session or teammate |
 | `/terse on/off` | Toggle terse output (on by default during build) |
 | `/setup-project` | Generate this project's `CLAUDE.md` |
@@ -68,6 +85,12 @@ Then run `/security-check` and open a PR.
 - `CLAUDE.md` is kept to about 60 lines; skills load only when used.
 - Tests are scoped during a phase, with the full suite only at `/verify`.
 - Use `/handoff` and then a fresh session instead of dragging a long context along.
+
+## More
+
+- [examples/](examples/): a worked plan and handoff to copy.
+- [templates/ci/agent-review.yml](templates/ci/agent-review.yml): Claude reviews every PR in GitHub Actions.
+- [evals/](evals/): how to A/B test the workflow on your own tasks.
 
 ## Team tips
 

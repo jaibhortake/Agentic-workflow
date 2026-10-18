@@ -1,0 +1,26 @@
+# Copy to your project's .github/workflows/agent-review.yml to have Claude review every PR
+# using the same review rules. Needs repo secret ANTHROPIC_API_KEY.
+# Docs: https://github.com/anthropics/claude-code-action
+name: Agent review
+on:
+  pull_request:
+    types: [opened, synchronize]
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: { fetch-depth: 0 }
+      - uses: anthropics/claude-code-action@v1
+        with:
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          prompt: |
+            Review this PR following .claude/skills/review/SKILL.md and
+            .claude/skills/security-check/SKILL.md. Compare against the plan in
+            docs/plans/ if one matches. Post findings as PR comments:
+            severity — file:line — problem — fix. Say "No findings" if none.

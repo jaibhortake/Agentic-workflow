@@ -12,9 +12,19 @@ MARK="<!-- agentic-workflow -->"
 
 echo "Installing agentic-workflow into $DEST"
 
-mkdir -p "$DEST/.claude/skills" "$DEST/.claude/agents"
+mkdir -p "$DEST/.claude/skills" "$DEST/.claude/agents" "$DEST/.claude/hooks" "$DEST/.claude/presets"
 cp -R "$SRC/skills/." "$DEST/.claude/skills/"
 cp -R "$SRC/agents/." "$DEST/.claude/agents/"
+cp "$SRC/hooks/"*.sh "$DEST/.claude/hooks/"
+cp "$SRC/presets/"*.md "$DEST/.claude/presets/"
+[ -f "$DEST/.claude/workflow.json" ] || cp "$SRC/templates/workflow.json" "$DEST/.claude/workflow.json"
+
+# Hooks: install settings.json if absent; never overwrite an existing one.
+if [ ! -f "$DEST/.claude/settings.json" ]; then
+  cp "$SRC/templates/settings.json" "$DEST/.claude/settings.json"
+elif ! grep -q "guard.sh" "$DEST/.claude/settings.json"; then
+  echo "NOTE: .claude/settings.json exists — merge the hooks from $SRC/templates/settings.json manually."
+fi
 
 for d in docs/plans/new docs/plans/active docs/plans/done docs/decisions; do
   mkdir -p "$DEST/$d"; touch "$DEST/$d/.gitkeep"

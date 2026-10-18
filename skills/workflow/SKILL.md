@@ -10,8 +10,8 @@ description: Entry point. Sizes the task (S/M/L) and routes to the right phases.
 3. Size it:
    | Size | Signals | Path |
    |---|---|---|
-   | S | ≤1 file, obvious fix, no behaviour change risk | build → `/verify` |
-   | M | one feature/bug, a few files | `/write-plan` → `/build-phase` → `/review` → `/verify` |
+   | S | ≤2 source files, spec is clear and complete, no schema/API/auth change | build (tests first for logic) → `/verify` |
+   | M | spec has gaps to decide, or 3+ files, or touches shared code others call | `/write-plan` → `/build-phase` → `/review` → `/verify` |
    | L | new module, schema/API/auth change, many files, unclear design | `/brainstorm` → `/write-plan` → `/build-phase` ×N → `/review` → `/verify` |
 4. State the size + path in one line and start. User may override.
 
