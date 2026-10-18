@@ -17,5 +17,5 @@ disable-model-invocation: true
 8. Fill `.claude/workflow.json` (keep existing `models`):
    - `testCommand`: fast full test command. The Stop hook runs it before the agent may finish after code changes. Empty = off.
    - `formatCommand`: formatter for one file, `{file}` = path (e.g. `npx prettier --write {file}`, `ruff format {file}`, `gofmt -w {file}`). Runs after every edit. Empty = off.
-   - `baseBranch`.
+   - `baseBranch`: detect it (`git symbolic-ref --short refs/remotes/origin/HEAD`, else the current branch from `git branch --show-current`), don't assume `main`.
 9. Ensure `docs/plans/{new,active,done}` and `docs/decisions` exist.
