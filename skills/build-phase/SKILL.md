@@ -5,7 +5,7 @@ description: Build one phase of an approved plan, test-first, then self-check an
 
 # Build phase
 
-Terse mode on (see `terse`). In Claude Code, delegate to the `builder` subagent with the plan path + phase number.
+Terse mode on (see `terse`). Delegate to the `builder` subagent with the plan path + phase number when subagents are available; otherwise do it yourself, one phase at a time. For logic, write the failing test BEFORE the code and see it fail — don't write both together.
 
 1. Read only the plan file and the files it names for this phase.
 2. For logic: write the failing test, run it, confirm it fails for the right reason.

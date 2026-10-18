@@ -27,6 +27,6 @@ Read by Claude Code, Cursor, Copilot, Codex, Gemini CLI. Keep short — every li
 
 ## Workflow commands (skills)
 Skill files: `.claude/skills/<name>/SKILL.md`. Tools without slash-command support: read the matching file when the step is reached.
-`/workflow` (start here) · `/brainstorm` · `/write-plan` · `/build-phase` · `/review` · `/verify` · `/debug` · `/security-check` · `/pr` · `/triage` · `/handoff` · `/terse` · `/setup-project`
+`/workflow` (start here) · `/brainstorm` · `/write-plan` · `/build-phase` · `/review` · `/verify` · `/debug` · `/security-check` · `/pr` · `/triage` · `/models` · `/handoff` · `/terse` · `/setup-project`
 
 Project-specific facts (stack, commands, conventions) live in `CLAUDE.md` / the "Project" section below.

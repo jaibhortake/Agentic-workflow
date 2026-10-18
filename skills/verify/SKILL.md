@@ -17,7 +17,7 @@ Nothing is "done" until this passes in the current session.
 Report:
 ```
 Verified: yes | no
-Checks: tests <x/y>, lint <ok>, build <ok>
+Checks: tests <x/y>, lint <ok | n/a — none configured>, build <ok | n/a>
 ACs: AC1 ✓ (test_name) …
 Drift: none | <listed>
 Next: /security-check then PR

@@ -5,7 +5,7 @@ description: Security review of the pending changes before a PR - secrets, injec
 
 # Security check
 
-Scope: `git diff` against the base branch (plus new dependencies). In Claude Code you can also run the built-in `/security-review`.
+Scope: the diff against the base branch plus uncommitted changes (no base or commits yet: all changed files), and any new dependencies. In Claude Code you can also run the built-in `/security-review`.
 
 Check:
 - **Secrets:** keys, tokens, passwords, connection strings in code, config, tests, logs. `.env` files not committed.

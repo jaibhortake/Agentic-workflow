@@ -5,7 +5,7 @@ description: Independent fresh-eyes review of the changes against the plan and i
 
 # Review
 
-In Claude Code, run via the `reviewer` subagent (fresh context, strongest model). Input: plan path + `git diff` against the base branch. Don't read the build transcript; use the handoff summary.
+Run via the `reviewer` subagent when available (fresh context); otherwise review in the same session but re-read the diff cold, not from memory of writing it. Input: plan path + the diff. Diff = `git diff <baseBranch>...HEAD` plus uncommitted changes; with no base branch or no commits yet, use `git status` and read the changed files. Don't read the build transcript; use the handoff summary.
 
 Check, one lens at a time, only what applies:
 1. **Intent:** does it do what the user asked — no more, no less?

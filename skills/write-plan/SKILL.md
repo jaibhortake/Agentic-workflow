@@ -7,7 +7,7 @@ description: Write a phased, decision-complete implementation plan file that a c
 
 Goal: a plan so complete the builder never has to decide anything.
 
-Save to `docs/plans/new/<slug>.md`, then ask the user to approve. On approval move it to `docs/plans/active/`.
+Save to `docs/plans/new/<slug>.md`, then ask the user to approve. On approval move it to `docs/plans/active/`. If the user already said to proceed without review, still save to `new/`, then move it to `active/` before building. Can't ask (unattended run)? List your assumptions in an `## Assumptions` section.
 
 ```
 # Plan: <title>
