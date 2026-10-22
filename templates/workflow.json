@@ -3,5 +3,10 @@
   "formatCommand": "",
   "baseBranch": "main",
   "rigor": "standard",
+  "testing": "tdd",
+  "terse": "full",
+  "useGithubIssues": false,
+  "githubRepo": "",
+  "githubProjectId": "",
   "models": { "plan": "inherit", "build": "inherit", "review": "inherit", "explore": "inherit" }
 }

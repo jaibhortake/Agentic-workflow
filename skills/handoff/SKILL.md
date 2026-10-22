@@ -26,6 +26,7 @@ Then tell the user: "Start a fresh session and say: resume from docs/handoff.md"
 To resume: read the handoff + plan only, then continue from Next steps.
 
 ## `/handoff compact`: same session, before compacting
+Prefer `/compact-brief`, which carries more (rulings verbatim, what lived only in chat, how the owner wants you to work). This remains as the minimal variant.
 Don't write a file. Output two things for the user:
 1. A ready-to-run line: `/compact Keep: plan <path> at Phase N, modified files <list>, test command <cmd>, open decisions <list>.`
 2. A ≤10-line brief to paste after compaction (goal stack, plan + phase, next step, verify command).

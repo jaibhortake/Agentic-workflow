@@ -32,7 +32,7 @@ Read by Claude Code, Cursor, Copilot, Codex, Gemini CLI. Keep short — every li
 
 ## Workflow commands (skills)
 Skill files: `.claude/skills/<name>/SKILL.md`. Tools without slash-command support: read the matching file when the step is reached.
-`/workflow` (start here) · `/brainstorm` · `/write-plan` · `/build-phase` · `/review` · `/verify` · `/debug` · `/security-check` · `/pr` · `/triage` · `/backlog` · `/models` · `/handoff` · `/terse` · `/setup-project` · `/decision-summary`
-Reference skills (loaded by the gates, not run directly): `existing-mechanisms` · `review-lenses` · `test-scope` · `build-handoff`
+`/workflow` (start here; holds rules AW-1..30) · `/brainstorm` · `/write-plan` · `/build-phase` · `/build-model` (dedicated cheaper builder: build, review, handoff, stop) · `/review` · `/build-handoff` · `/verify` · `/debug` · `/security-check` · `/pr` · `/triage` · `/backlog` · `/models` · `/workflow-config` · `/compact-brief` · `/handoff` · `/decision-summary` · `/learn` · `/terse` · `/setup-project`
+Reference skills (loaded by the gates, not run directly): `existing-mechanisms` · `review-lenses` · `test-scope` · `knowledge-graph` (only if graphify is installed). Agents: `builder` · `reviewer` · `explorer` · `outside-reviewer` (read-only).
 
 Project-specific facts (stack, commands, conventions) live in `CLAUDE.md` / the "Project" section below.

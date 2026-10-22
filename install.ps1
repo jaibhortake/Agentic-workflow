@@ -28,6 +28,7 @@ foreach ($pair in @(@("builder", $Build), @("reviewer", $Review), @("explorer", 
   if ($want) { $text = [regex]::Replace($text, '(?m)^model:.*$', "model: $want") }
   [IO.File]::WriteAllText($f, $text, $Utf8)
 }
+Copy-Item "$Src\agents\outside-reviewer.md" "$Dest\.claude\agents\outside-reviewer.md" -Force
 Copy-Item "$Src\hooks\*.sh" "$Dest\.claude\hooks\" -Force
 Copy-Item "$Src\presets\*.md" "$Dest\.claude\presets\" -Force
 if (-not (Test-Path "$Dest\.claude\workflow.json")) { Copy-Item "$Src\templates\workflow.json" "$Dest\.claude\workflow.json" }

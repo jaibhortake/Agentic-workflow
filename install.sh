@@ -33,6 +33,7 @@ for a in builder:"$M_BUILD" reviewer:"$M_REVIEW" explorer:"$M_EXPLORE"; do
   cp "$SRC/agents/$name.md" "$f"
   [ -n "$want" ] && sed -i.bak "s/^model:.*/model: $want/" "$f" && rm -f "$f.bak"
 done
+cp "$SRC/agents/outside-reviewer.md" "$DEST/.claude/agents/outside-reviewer.md"
 cp "$SRC/hooks/"*.sh "$DEST/.claude/hooks/"
 cp "$SRC/presets/"*.md "$DEST/.claude/presets/"
 [ -f "$DEST/.claude/workflow.json" ] || cp "$SRC/templates/workflow.json" "$DEST/.claude/workflow.json"

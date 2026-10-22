@@ -1,7 +1,7 @@
 {
   "name": "agentic-workflow",
-  "version": "1.0.0",
-  "description": "Lean, stack-agnostic brainstorm → plan → build → review → verify workflow with token-saving defaults and safety hooks.",
+  "version": "1.1.0",
+  "description": "Stack-agnostic brainstorm → plan → build → review → verify workflow with intent-audited drift checks, strict rigor mode, token-saving defaults and safety hooks.",
   "author": { "name": "Jai Bhortake" },
   "repository": "https://github.com/jaibhortake/Agentic-workflow",
   "license": "MIT"
