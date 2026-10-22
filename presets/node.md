@@ -6,3 +6,4 @@
 - Audit: `npm audit --omit=dev` (or pnpm/yarn equivalent).
 - Ignore: node_modules, dist, build, .next, coverage.
 - Watch for: ESM vs CJS (`"type"` field), env vars via `.env` (never commit), monorepo workspaces (`workspaces`, pnpm-workspace.yaml, turbo.json, nx.json).
+- Test rungs (see `test-scope`): T2 `npx jest --changedSince=<base>` or `npx vitest related <files>`; T3 the changed workspace package's full suite + its tsc/lint.

@@ -6,3 +6,4 @@
 - Audit: `govulncheck ./...`.
 - Ignore: vendor (unless vendored deliberately), bin.
 - Watch for: race conditions — run `go test -race` on concurrency changes; generated code (`//go:generate`, *.pb.go) — don't hand-edit.
+- Test rungs (see `test-scope`): T2 `go test` on changed packages and their dependents (`go list -deps`/`go test ./pkg/...`); T3 `go test ./...` for the changed module + `go vet`.

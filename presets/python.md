@@ -7,3 +7,4 @@
 - Audit: `pip-audit`.
 - Ignore: .venv, __pycache__, .pytest_cache, dist, *.egg-info.
 - Watch for: Django (`manage.py test`), FastAPI/Flask app factories, migrations (alembic, Django) — schema changes need a migration + rollback note.
+- Test rungs (see `test-scope`): T2 `pytest --testmon` (if installed) or `pytest <touched test files>`; T3 the changed package's full suite + mypy/pyright.

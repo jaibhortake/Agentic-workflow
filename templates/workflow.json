@@ -2,5 +2,6 @@
   "testCommand": "",
   "formatCommand": "",
   "baseBranch": "main",
+  "rigor": "standard",
   "models": { "plan": "inherit", "build": "inherit", "review": "inherit", "explore": "inherit" }
 }

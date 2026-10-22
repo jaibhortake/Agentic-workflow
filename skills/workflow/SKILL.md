@@ -15,6 +15,7 @@ description: Entry point. Sizes the task (S/M/L) and routes to the right phases.
    | L | new module, schema/API/auth change, many files, unclear design | `/brainstorm` → `/write-plan` → `/build-phase` ×N → `/review` → `/verify` |
    Rule of thumb: if you can describe the diff in one sentence, it's S — skip the plan.
    S tasks have no plan file: state your assumptions and the root cause (for bugs) in your reply, and run `/debug` first for any bug.
+   **Rigor:** L runs `strict` (see `review`, `write-plan` plan review, `verify`) unless `.claude/workflow.json` says otherwise; S and M run `standard`. Rigor adds depth, it never upsizes a task.
 4. State the size + path in one line and start. User may override.
 
 ## Roles (models are the user's choice — see `/models`)
@@ -27,4 +28,5 @@ description: Entry point. Sizes the task (S/M/L) and routes to the right phases.
 - No code during brainstorm.
 - No build without an approved plan (M/L).
 - No "done" without `/verify` evidence.
+- No edits to a frozen decision doc; undocumented drift blocks completion.
 - `/security-check` before opening a PR.

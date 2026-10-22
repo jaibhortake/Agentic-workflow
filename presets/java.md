@@ -6,3 +6,4 @@
 - Audit: OWASP dependency-check plugin if configured.
 - Ignore: target, build, .gradle, .idea.
 - Watch for: Spring profiles (application-*.yml), Flyway/Liquibase migrations, multi-module builds (run tests for touched module only during build phases).
+- Test rungs (see `test-scope`): T2 module tests only (`mvn -pl <module> -am test` / `gradle :<module>:test`); T3 all tests of the changed module + static checks.
