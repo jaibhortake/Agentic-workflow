@@ -107,3 +107,9 @@ Rounds: 2 (round 2 changed nothing).
 ## Amendment Log
 ### A1 - 2026-10-24 - Phases 2-5 land as one commit
 Phases 2-5 were done by one mechanical port (SAW sections into `references/`, plus an index in each SKILL.md), so they ship as one commit instead of four. Content and proof are unchanged: the scratch checker passes, and every skill's references hold at least SAW's word count. Found while building; this is about packaging, not intent, so the decision doc is untouched.
+
+### A2 - 2026-10-24 - Phase 6/8 adjustments found while building
+- `docs/extras/driving-an-agent-as-build-model.md` is renamed to `docs/extras/README.md` (the principles that apply to every tool) instead of being split across the four guides. Nothing is removed, and the per-tool guides link to it.
+- `docs/installation.md`, the README, the AGENTS.md command list and the plugin.json version move from Phase 6 to the end of Phase 8, because they describe the installer and hooks that Phases 7-8 build.
+- Phase 8 targets change, per the vendors' docs (2026-10): Cursor, Codex and Gemini CLI all read project skills from `.agents/skills/`, and Cursor and Codex read `AGENTS.md` natively. So `--tool cursor|codex|gemini` installs one `.agents/skills/` copy plus `AGENTS.md`, and gemini adds a `GEMINI.md` that imports `AGENTS.md`. Dropped as unneeded: `.cursor/rules/*.mdc`, `.cursor/skills/` copies and `.gemini/commands/*.toml`.
+- The Gemini guides are written from Gemini CLI's docs, not from runs. No agent CLI is installed on the build machine, which also puts Phase 9's headless eval at risk (checked at Phase 9 start, per review pass 10).

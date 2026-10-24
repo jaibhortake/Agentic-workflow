@@ -1,4 +1,4 @@
-# Driving another agent CLI as the build model (generic recipe)
+# Driving another agent CLI (principles for every tool)
 
 Not a skill; no skill loads or runs these commands. It applies to any headless-capable coding CLI (Cursor agent, Codex, Gemini or Antigravity CLI, a Claude CLI process). Check your tool's own docs for exact flags; they change faster than this page.
 
