@@ -116,3 +116,6 @@ Phases 2-5 were done by one mechanical port (SAW sections into `references/`, pl
 
 ### A3 - 2026-10-24 - Phase 9 runs on in-session subagents
 No Claude CLI on this machine (build halt, per review pass 10). Owner chose "Subagents here (Recommended)": fresh subagents in this session, compact skills (commit 361ab56) against full skills (HEAD), same model, same planted-bug task, 3 runs each. Results are recorded as in-session subagents, not headless CLI. The owner also approved a fresh-subagent `/review`, then `/verify`, then a push to origin/main.
+
+### A4 - 2026-10-24 - Final review and verify skipped by the owner
+After Phase 9, the owner said: "do the thrid step only" (archive the plan and push), so the fresh-context `/review` and `/verify` gates did not run. A reviewer was started and then stopped before reporting. Evidence at archive time: the scratch consistency checker passes, `tests/hooks/run.sh` 38/38, `tests/install/run.sh` 162/162 (T4, the repo's whole suite). The requirements tick-off and drift audit were not run; run `/review` then `/verify` on 361ab56..HEAD to close them.
