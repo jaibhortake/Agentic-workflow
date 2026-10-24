@@ -121,8 +121,6 @@ In `.claude/workflow.json`; change them with `/workflow-config`.
 | `useGithubIssues` | `true` enables `/backlog` |
 | `models` | Per-role models, or use `/models` |
 
-## More
+## License
 
-[docs/](docs/): [workflow diagram](docs/workflow.md) · [installation](docs/installation.md) · [configuration](docs/configuration.md) · [multi-model use](docs/multi-model.md) · [driving Cursor, Codex, Gemini and Claude CLI headless](docs/extras/README.md) · [security](docs/security.md) · [philosophy](docs/philosophy.md). Also [examples/](examples/), [evals/](evals/), [CONTRIBUTING.md](CONTRIBUTING.md) for changing this repo.
-
-MIT License. Third-party licenses: [THIRD-PARTY-LICENSES.md](THIRD-PARTY-LICENSES.md).
+MIT License
