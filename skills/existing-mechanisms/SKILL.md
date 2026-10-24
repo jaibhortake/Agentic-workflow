@@ -53,7 +53,7 @@ Answer every one, or write "does not apply, because ...". Silence reads as "chec
 
 ## How to answer
 - **Count the set, then list it:** "7 call sites in 5 files", members named. "All callers updated" is an adjective. If you did not count, say so.
-- **Every answer names its evidence:** the query, grep, file or probe. Docs and comments are evidence tier 1 (see `brainstorm` BS-3).
+- **Every answer names its evidence:** the query, grep, file or probe. Docs and comments are evidence tier 1 (see `brainstorm` BS-9).
 - **An unknown is probed or promoted** to an Open Question, never left silent.
 - **Write answers where the next reader will find them:** the decision doc (brainstorm) or the plan's Codebase Analysis (write-plan). Answers that live only in the session never reach the builder.
 

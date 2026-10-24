@@ -1,6 +1,43 @@
 # Agentic-workflow
 
-A set of skills, hooks and installers that make an AI coding agent work in a fixed order: **brainstorm → plan → build → review → verify**. Plans are files, nothing is "done" without fresh test evidence, and small tasks skip the ceremony. Works with Claude Code, Cursor, Codex and Gemini CLI.
+Skills, hooks and installers that make an AI coding agent work in a fixed order: **brainstorm → plan → build → review → verify**. Works with Claude Code, Cursor, Codex and Gemini CLI.
+
+The idea is **intent-audited development**. You decide what to build and that decision is written down. Your strongest model plans it and checks the result; a cheaper model (or another tool) can do the building. Nothing counts as done until the finished work has been checked against what you originally meant, with a test run made in this session as proof.
+
+## How it flows
+
+```mermaid
+flowchart TD
+    A(["You: /workflow your task"]) --> B{"Size the task"}
+    B -->|"S: clear spec, 2 files or fewer"| S1["Build, tests first"]
+    B -->|"M: gaps to decide, 3+ files"| P
+    B -->|"L: new module, schema, API or auth"| BR["/brainstorm<br/>options and a decision doc<br/>no code"]
+    BR --> P["/write-plan<br/>phased plan in docs/plans/new/<br/>then ten review passes"]
+    P --> AP{"You approve<br/>the plan?"}
+    AP -->|"changes wanted"| P
+    AP -->|"approved: plan moves to<br/>docs/plans/active/"| BP["/build-phase, one phase at a time<br/>check the plan, tests first,<br/>scoped tests, self-review"]
+    BP -->|"the plan is wrong"| H["Builder halts and reports.<br/>Planner amends the plan<br/>and logs it"]
+    H --> BP
+    BP --> RV["/review<br/>fresh eyes on the whole change<br/>loops until zero findings"]
+    RV -->|"too much to fix in place"| RW["Rework brief<br/>back to the builder"]
+    RW --> BP
+    RV -->|"clean"| V
+    S1 --> V["/verify<br/>fresh test run, plan checklist,<br/>drift audit against your intent"]
+    V -->|"drift nobody agreed to"| D{"You decide"}
+    D -->|"send it back"| BP
+    D -->|"accept: logged as an amendment"| SH
+    V -->|"pass"| SH["/security-check, then /pr<br/>plan moves to docs/plans/done/"]
+```
+
+**Why it works**
+
+- **Intent is written down and locked.** `/brainstorm` records what you chose, what you ruled out and what users will see. After you approve the plan, only you can change it.
+- **The plan is a file, not a chat.** It names every decision, so a cheaper model can build it without guessing.
+- **The builder stops instead of improvising.** If the plan has a gap, it reports back; the planner fixes the plan and logs the change.
+- **Review owns the code.** It looks through seven lenses (impact, removal, logic, behaviour, business sense, proof, coherence), one at a time, and repeats until a round finds nothing.
+- **Drift blocks "done".** `/verify` compares your intent to the plan and the plan to the code. A difference nobody agreed to stops the claim.
+- **Hooks enforce it.** No source edits without an approved plan, an append-only change log, no secret-file edits.
+- **Token-aware.** Small tasks skip the ceremony, tests are scoped per gate, and each skill's long explanations load only when a step needs them.
 
 ## 1. Install
 
@@ -25,7 +62,7 @@ The default tool is Claude Code. For others add `--tool cursor`, `--tool codex`,
 
 ## 2. First run: create your project's `CLAUDE.md`
 
-Open the project in your agent and run **`/setup-project`** (Cursor, Codex, Gemini: ask the agent to run the `setup-project` skill). It reads your repo, finds the real install/test/lint commands, and fills in the project facts file. That file is `CLAUDE.md` for Claude Code, or a `## Project` section at the bottom of `AGENTS.md` for the other tools. It also fills `.claude/workflow.json` with your test and format commands.
+Open the project in your agent and run **`/setup-project`** (Cursor, Codex, Gemini: ask the agent to run the `setup-project` skill). It reads your repo, finds the real install, test and lint commands, and fills in the project facts file: `CLAUDE.md` for Claude Code, or a `## Project` section at the bottom of `AGENTS.md` for the other tools. It also fills your test and format commands into `.claude/workflow.json`.
 
 What the installer put in your project:
 
@@ -40,17 +77,70 @@ What the installer put in your project:
 | `docs/plans/{new,active,done}/` | Plans: drafts, approved and being built, finished |
 | `docs/decisions/` | Decision docs written by `/brainstorm` |
 
-## 3. Use it
+## 3. How to use the skills
 
-Start any task with **`/workflow <what you want>`**. It sizes the task and picks the path:
+You only need to remember one command: **`/workflow <what you want>`**. It sizes the task, tells you the path, and drives the phases. Everything below is what happens, and what you can type yourself.
 
-| Size | When | Path |
-|---|---|---|
-| **S** | clear spec, at most 2 source files, no schema/API/auth change | build → `/verify` |
-| **M** | spec gaps, 3+ files, or shared code | `/write-plan` → `/build-phase` → `/review` → `/verify` |
-| **L** | new module, schema/API/auth change, unclear design | `/brainstorm` → `/write-plan` → `/build-phase` per phase → `/review` → `/verify` |
+**A small fix (S).** Clear spec, two files or fewer.
+```
+/workflow fix the off-by-one in the pagination helper
+```
+It builds with a failing test first, then runs `/verify`. No plan file. For a bug it runs `/debug` first: find the root cause, fix it, add a regression test.
 
-When `/verify` passes, run `/security-check`, then `/pr`. A plan you approve moves from `docs/plans/new/` to `active/`, and to `done/` after verify. Bugs start with `/debug`.
+**A medium feature (M).** Some decisions to make, or three or more files.
+```
+/workflow add CSV export to the reports page
+```
+It runs `/write-plan` and saves a phased plan to `docs/plans/new/`. Read it like code. Reply "approved" (or ask for changes) and the plan moves to `docs/plans/active/`. Then `/build-phase` builds it phase by phase, `/review` checks it, `/verify` closes it.
+
+**A large feature (L).** New module, or a schema, API or auth change.
+```
+/brainstorm offline support for the sync layer     # options, risks, a decision doc; no code
+/decision-summary                                  # any time: what has been decided, in plain words
+/write-plan offline-sync                           # the phased plan
+                                                   # you approve; the decision doc is now locked
+/build-phase docs/plans/active/offline-sync.md 1   # phase 1; repeat per phase (it drives this itself)
+/review                                            # loops until clean
+/verify                                            # fresh evidence + drift audit
+/security-check
+/pr
+```
+`/workflow` drives the middle steps for you; you mostly approve the plan and read the final verify report.
+
+**Hand the build to a cheaper model.** Plan with your strongest model, then in a second session (Sonnet, Cursor, Codex, Gemini, a local model) run:
+```
+/build-model docs/plans/active/offline-sync.md
+```
+It checks the plan, builds every phase, reviews its own work, writes a handoff summary and stops. Paste that summary into your main session: it re-reviews with fresh eyes and runs `/verify`. If the builder finds the plan wrong it halts with a report instead of guessing.
+
+```mermaid
+flowchart LR
+    subgraph PL["Planning model: your strongest"]
+        p1["/brainstorm"] --> p2["/write-plan"]
+    end
+    subgraph BM["Build model: can be cheaper, or another tool"]
+        b1["/build-model<br/>runs /build-phase<br/>for every phase"]
+    end
+    subgraph RM["Review model: fresh eyes"]
+        r1["/review"] --> r2["/verify"]
+    end
+    p2 -->|"the plan file<br/>docs/plans/active/"| b1
+    b1 -->|"build handoff: halts,<br/>deviations, test runs"| r1
+    b1 -.->|"halt report if the plan is wrong"| p2
+```
+
+**Long sessions and getting back into it.**
+- `/compact-brief` writes a one-line compact command plus a resume brief to paste after it, so work survives a context compaction. `/handoff` does the same for a fresh session or a teammate.
+- `/triage` recommends what to pick up next from your plans, handoffs and issues.
+- `/learn` saves what a finished task taught you to `docs/lessons.md`.
+
+**Everyday settings.**
+```
+/models build=sonnet review=opus explore=haiku   # a model per role
+/workflow-config rigor=strict testing=bdd terse=lite
+/terse off                                       # full-prose output
+/backlog bug "login fails on empty password"     # GitHub Issues, if enabled
+```
 
 ## What each skill does
 
