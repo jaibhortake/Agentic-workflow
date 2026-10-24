@@ -124,6 +124,8 @@ This is the one way this gate can do more harm than not running. You'll find a d
 Then the matching plan Amendment Log entry if missing, appended the same way. A later reader must see **both** what was decided and what happened instead.
 
 ---
+**S tasks:** when the status is COMPLETE and `docs/plans/.s-task` exists, delete it (the `plan-gate` hook's S marker). Quote its line under the claim. Leave it in place when NOT COMPLETE.
+
 # Part 4: the completion report
 You're writing to the person who asked for the feature, and their only question is *did I get what we agreed*. Answer first, in their words. Said, not saved; **the one report this gate emits** (Parts 1-3 are worked, not narrated). Three rules: **bad news first** (evidence at the bottom; nobody should read a clean checklist to discover the thing isn't there); **show both sides of every difference** (quote what was decided, then what was built and where; "narrowed", "half-implemented", "widened" are your labels not the difference; one row, two columns, both filled); **say it in the words of the work,** not this skill's (the verdict keyword and the suite line's rung are the only terms that travel, each with a plain sentence). No decision doc? The first section says exactly that: "nothing departed" and "nothing recorded what we decided" look identical and aren't.
 

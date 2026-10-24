@@ -31,7 +31,7 @@ This SKILL.md is the binding gate. Each section's full explanation, examples and
    | S | at most 2 source files, spec clear and complete, no schema/API/auth change | build (tests first for logic) -> `/verify` |
    | M | spec has gaps to decide, or 3+ files, or shared code others call | `/write-plan` -> `/build-phase` -> `/review` -> `/verify` |
    | L | new module, schema/API/auth change, many files, unclear design | `/brainstorm` -> `/write-plan` -> `/build-phase` xN -> `/review` -> `/verify` |
-   If you can describe the diff in one sentence it's S: skip the plan. S tasks have no plan file: state assumptions and (for bugs) the root cause in your reply, and run `/debug` first for any bug.
+   If you can describe the diff in one sentence it's S: skip the plan. S tasks have no plan file: state assumptions and (for bugs) the root cause in your reply, and run `/debug` first for any bug. With `planGate` on, declare it before the first source edit by writing one line to `docs/plans/.s-task` (`S: <what, in one sentence>`); the `plan-gate` hook blocks source edits otherwise, and `/verify` removes the marker. Never write the marker for M/L work to get past the gate: that is skipping the plan, and the marker is the record that you did.
    **Rigor** (`.claude/workflow.json`): L runs `strict` unless set otherwise; S and M run `standard`. Rigor adds depth to a path; it never upsizes a task. Don't upsize a well-specified small task: ceremony costs tokens without adding safety.
 4. State size and path in one line and start. The user may override.
 

@@ -3,10 +3,16 @@
   "formatCommand": "",
   "baseBranch": "main",
   "rigor": "standard",
+  "planGate": true,
   "testing": "tdd",
   "terse": "full",
   "useGithubIssues": false,
   "githubRepo": "",
   "githubProjectId": "",
-  "models": { "plan": "inherit", "build": "inherit", "review": "inherit", "explore": "inherit" }
+  "models": {
+    "plan": "inherit",
+    "build": "inherit",
+    "review": "inherit",
+    "explore": "inherit"
+  }
 }

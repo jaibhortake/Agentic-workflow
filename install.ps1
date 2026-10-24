@@ -77,7 +77,7 @@ if (-not (Test-Path $claude)) {
 $gi = "$Dest\.gitignore"
 if (-not (Test-Path $gi)) { New-Item -ItemType File $gi | Out-Null }
 $lines = @(Get-Content $gi)
-foreach ($p in "CLAUDE.local.md", "docs/handoff.md") {
+foreach ($p in "CLAUDE.local.md", "docs/handoff.md", "docs/plans/.s-task") {
   if ($lines -notcontains $p) { Add-Content $gi $p }
 }
 

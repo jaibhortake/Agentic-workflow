@@ -72,7 +72,7 @@ fi
 
 # Keep personal notes and handoffs out of git.
 touch "$DEST/.gitignore"
-for p in CLAUDE.local.md docs/handoff.md; do
+for p in CLAUDE.local.md docs/handoff.md docs/plans/.s-task; do
   grep -qxF "$p" "$DEST/.gitignore" || echo "$p" >> "$DEST/.gitignore"
 done
 

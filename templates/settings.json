@@ -9,6 +9,19 @@
             "command": "bash .claude/hooks/guard.sh"
           }
         ]
+      },
+      {
+        "matcher": "Edit|Write|MultiEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash .claude/hooks/plan-gate.sh"
+          },
+          {
+            "type": "command",
+            "command": "bash .claude/hooks/amendment-guard.sh"
+          }
+        ]
       }
     ],
     "Stop": [
