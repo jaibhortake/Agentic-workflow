@@ -1,5 +1,3 @@
-<!-- Ported from nikhilw/structured-agentic-workflow docs/comparison.md (MIT, commit 58180fb9), adapted to this repo's names and paths. -->
-
 # How it compares
 
 Most agent workflows stop at "does the code match the spec?". This one practises

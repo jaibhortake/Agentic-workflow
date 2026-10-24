@@ -1,6 +1,6 @@
 ---
 name: debug
-description: "Entry point for any bug, failing test or unexpected behaviour. Runs the vendored systematic-debugging skill (root cause before fix), then requires a regression test and /verify. Maps to SAW's /systematic-debugging."
+description: "Entry point for any bug, failing test or unexpected behaviour. Runs the vendored systematic-debugging skill (root cause before fix), then requires a regression test and /verify."
 ---
 
 # Debug

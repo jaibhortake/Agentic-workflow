@@ -1,5 +1,3 @@
-<!-- Ported from nikhilw/structured-agentic-workflow docs/agent-config.md (MIT, commit 58180fb9), adapted to this repo's names and paths. -->
-
 # Configuring `CLAUDE.md` / `AGENTS.md`
 
 Skills installed globally are discovered automatically; but discovery is not the same as

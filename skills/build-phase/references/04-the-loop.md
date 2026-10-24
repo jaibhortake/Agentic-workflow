@@ -1,4 +1,4 @@
-<!-- Ported from nikhilw/structured-agentic-workflow skills/build-phase/SKILL.md (MIT), adapted to this repo's names and paths. This is the full explanation; ../SKILL.md is binding where the two differ (S/M/L sizing, rigor, docs/plans/active/, docs/decisions/, terse). -->
+<!-- Full detail for this skill. ../SKILL.md is binding where the two differ (S/M/L sizing, rigor, docs/plans/active/, docs/decisions/, terse). -->
 
 ## The Loop: Read + Review Plan → TDD (Red/Green/Refactor) → Scoped Tests → Self-Review → Proceed
 

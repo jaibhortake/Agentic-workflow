@@ -31,9 +31,7 @@ Several skills read text written by people outside the project. That exposure is
 
 ## In depth
 
-<!-- Ported from nikhilw/structured-agentic-workflow docs/security.md (MIT, commit 58180fb9), adapted to this repo's names and paths. -->
-
-The summary above is this repo's; where they differ, it governs. What follows is SAW's full text.
+The summary above is this repo's; where they differ, it governs. What follows is the full text.
 
 skills.sh scans every skill with Gen (Agent Trust Hub), Socket and Snyk. Four skills carry a
 standing Snyk warning, **W011: third-party content exposure**. It is expected, and it stays.

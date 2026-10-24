@@ -1,4 +1,4 @@
-<!-- Ported from nikhilw/structured-agentic-workflow skills/workflow-config/SKILL.md (MIT), adapted to this repo's names and paths. This is the full explanation; ../SKILL.md is binding where the two differ (S/M/L sizing, rigor, docs/plans/active/, docs/decisions/, terse). -->
+<!-- Full detail for this skill. ../SKILL.md is binding where the two differ (S/M/L sizing, rigor, docs/plans/active/, docs/decisions/, terse). -->
 
 > **This repo differs:** preferences are stored in `.claude/workflow.json` (keys `rigor`, `testing`, `terse`, `useGithubIssues`, `githubRepo`, `githubProjectId`), never in agent memory. Where this file says memory or `workflow-config:<key>`, read that file and key instead.
 

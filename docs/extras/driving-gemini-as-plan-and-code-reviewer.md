@@ -1,5 +1,5 @@
 # Driving Gemini CLI as the plan reviewer and code reviewer
-*Launch mechanics: `driving-gemini-as-build-model.md`. Setup: `agent-cli-setup.md`. Adapted from SAW's agy reviewer guide; the behaviour notes marked (agy) were observed by SAW on Antigravity CLI with Gemini models and are worth checking for on Gemini CLI too.*
+*Launch mechanics: `driving-gemini-as-build-model.md`. Setup: `agent-cli-setup.md`. The behaviour notes marked (agy) were observed on Google's Antigravity CLI with Gemini models and are worth checking for on Gemini CLI too.*
 
 Gemini can review twice per plan: the plan review before the build model is launched (after the workflow's own plan reviews), and the code review after the build and its review, before `/verify`. Its findings are evidence, not verdicts (AW-16): confirm each one against the code before acting on it.
 
@@ -26,7 +26,7 @@ The checked-out branch is <branch>.
 
 ## What stops a review run early
 - **A command outside the policy.** Reviewers reach for commands you didn't expect (`git branch --show-current` to learn the branch), so list the allowed commands exactly in the prompt, and name the branch.
-- **Pipes, redirection, loops and heredocs (agy).** Gemini 3.1 Pro used them in four of six of SAW's pre-build reviews even when banned by name. After two failed runs on one brief, move that review to another reviewer (`driving-claude-cli-as-reviewer.md`).
+- **Pipes, redirection, loops and heredocs (agy).** Gemini 3.1 Pro used them in four of six pre-build reviews even when banned by name. After two failed runs on one brief, move that review to another reviewer (`driving-claude-cli-as-reviewer.md`).
 - **Directories outside the workspace.** Add them with `--include-directories` rather than letting it `cd`.
 - **Quota is per model family (agy).** If one family's quota runs out mid-review, switch with `-m`.
 

@@ -1,5 +1,5 @@
 # Driving Gemini CLI as the build model
-*Written from the Gemini CLI docs (google-gemini/gemini-cli, `docs/cli/`) as of 2026-10; not run on this repo's machine. CLIs change, so re-check with the probes in `agent-cli-setup.md`. Adapted from SAW's agy guide (agy, Google's Antigravity CLI, shares `~/.gemini` but has different flags).*
+*Written from the Gemini CLI docs (google-gemini/gemini-cli, `docs/cli/`) as of 2026-10; not run on this repo's machine. CLIs change, so re-check with the probes in `agent-cli-setup.md`. Google's Antigravity CLI (agy) shares `~/.gemini` but has different flags.*
 
 Not a skill; no skill loads or runs these commands. The principles in [README.md](README.md) apply. These sections of `driving-cursor-as-build-model.md` also apply unchanged: *Safety before you launch* (never run it against a live app), *After a killed run, check for unrestored mutations*, *Reported-done is not done*, *It will sometimes work around a gap instead of halting*, *Long plans must be launched in phase batches*, *Test suites*. This file holds only what differs.
 

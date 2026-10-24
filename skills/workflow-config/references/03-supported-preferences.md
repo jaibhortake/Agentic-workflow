@@ -1,4 +1,4 @@
-<!-- Ported from nikhilw/structured-agentic-workflow skills/workflow-config/SKILL.md (MIT), adapted to this repo's names and paths. This is the full explanation; ../SKILL.md is binding where the two differ (S/M/L sizing, rigor, docs/plans/active/, docs/decisions/, terse). -->
+<!-- Full detail for this skill. ../SKILL.md is binding where the two differ (S/M/L sizing, rigor, docs/plans/active/, docs/decisions/, terse). -->
 
 ## Supported Preferences
 
@@ -23,5 +23,5 @@ When terse is enabled, every workflow skill that checks `terse` in `.claude/work
 - **use-github-issues true**: Enable GitHub integration to track backlog via GitHub Issues and Projects through a GitHub MCP server. The target repository is auto-derived from the local `origin` remote, so no further configuration is required for the common case.
 
 Optional GitHub keys (only set when you need to override the defaults):
-- **workflow-config:github-repo**: Override the repository, in `owner/repo` format (e.g., `nikhilw/structured-agentic-workflow`). Leave unset to auto-derive from `git remote get-url origin`. Useful when issues live in a different repo than `origin`.
+- **workflow-config:github-repo**: Override the repository, in `owner/repo` format (e.g., `owner/repo`). Leave unset to auto-derive from `git remote get-url origin`. Useful when issues live in a different repo than `origin`.
 - **workflow-config:github-project-id**: The number or ID of a GitHub Project (V2) board to sync cards to.

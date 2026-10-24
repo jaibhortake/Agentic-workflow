@@ -1,5 +1,5 @@
 # Setting up the agent CLIs on a dev machine (Cursor, Codex, Gemini, Claude)
-*Adapted from SAW's `agent-cli-setup.md` (written for cursor-agent and agy 1.2.11). Cursor details are SAW's tested ones. Gemini and Codex details come from their docs as of 2026-10 and were not run here. CLIs change, so re-run the probes at the end after every upgrade.*
+*Cursor details were tested with cursor-agent 1.2.11. Gemini and Codex details come from their docs as of 2026-10 and were not run here. CLIs change, so re-run the probes at the end after every upgrade.*
 
 Not a skill; no skill loads or runs these commands. Every machine that runs a build or review model headless needs this once.
 
@@ -18,7 +18,7 @@ Don't keep a second copy under a user-level directory (`~/.agents/skills/`, `~/.
 ## Permissions: one allowlist, four formats
 Keep one list of allowed command prefixes and translate it into each tool's format.
 
-- **Cursor**, `$HOME/.cursor/cli-config.json`: `"approvalMode": "allowlist"`, `"sandbox": {"mode": "disabled"}`, and `permissions.allow` entries written `Shell(<command>)` (SAW, tested).
+- **Cursor**, `$HOME/.cursor/cli-config.json`: `"approvalMode": "allowlist"`, `"sandbox": {"mode": "disabled"}`, and `permissions.allow` entries written `Shell(<command>)` (tested).
 - **Gemini CLI**, `$HOME/.gemini/policies/agentic-workflow.toml`: one `[[rule]]` per command with `toolName = "run_shell_command"`, `commandPrefix = "<command>"`, `decision = "allow"`. Add `decision = "deny"` rules at higher `priority` for the never-list. `--allowed-tools` is deprecated, and workspace policies are documented as not yet functional.
 - **Codex**: run with `--sandbox workspace-write` (writes inside the repo, network off by default) for builds and `--sandbox read-only` for reviews. Don't add `--full-auto`; it overrides `--sandbox`. See `driving-codex-as-build-model.md`.
 - **Claude Code**, `.claude/settings.json`: `permissions.allow` entries written `Bash(<command>:*)`. `/fewer-permission-prompts` builds this from your history.

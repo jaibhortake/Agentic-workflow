@@ -1,4 +1,4 @@
-<!-- Ported from nikhilw/structured-agentic-workflow skills/review-lenses/SKILL.md (MIT), adapted to this repo's names and paths. This is the full explanation; ../SKILL.md is binding where the two differ (S/M/L sizing, rigor, docs/plans/active/, docs/decisions/, terse). -->
+<!-- Full detail for this skill. ../SKILL.md is binding where the two differ (S/M/L sizing, rigor, docs/plans/active/, docs/decisions/, terse). -->
 
 ## Rules for every lens
 

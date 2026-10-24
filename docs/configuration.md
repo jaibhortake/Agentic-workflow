@@ -1,6 +1,6 @@
 # Configuration
 
-Preferences live in `.claude/workflow.json` in your project, committed so teammates share them. Set them with `/workflow-config` (or edit the file). Personal-only choices go in `CLAUDE.local.md`, which the installer gitignores. Unlike SAW, nothing is stored in agent memory, so every tool and teammate reads the same values.
+Preferences live in `.claude/workflow.json` in your project, committed so teammates share them. Set them with `/workflow-config` (or edit the file). Personal-only choices go in `CLAUDE.local.md`, which the installer gitignores. Nothing is stored in agent memory, so every tool and teammate reads the same values.
 
 ```
 /workflow-config rigor=strict

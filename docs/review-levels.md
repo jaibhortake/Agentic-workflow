@@ -31,9 +31,7 @@ Each level catches what the one before it cannot. Cost notes are rough orders of
 
 ## In depth
 
-<!-- Ported from nikhilw/structured-agentic-workflow docs/extras/review-levels-and-who-runs-them.md (MIT, commit 58180fb9), adapted to this repo's names and paths. -->
-
-The summary above is this repo's; where they differ, it governs. What follows is SAW's full text.
+The summary above is this repo's; where they differ, it governs. What follows is the full text.
 
 *From long multi-phase builds that split planning, building and reviewing across models. Each level
 catches what the one before it cannot. Costs are rough orders of magnitude from 2026, to compare the

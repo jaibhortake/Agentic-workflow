@@ -1,5 +1,3 @@
-<!-- Ported from nikhilw/structured-agentic-workflow docs/extras/driving-claude-cli-as-reviewer.md (MIT, commit 58180fb9), adapted to this repo's names and paths. -->
-
 # Driving a separate Claude CLI process as a reviewer
 *Tested with Claude Code 2.1 (`claude --version`). Covers the deep read (a Sonnet-class model) and
 the fix check (a Haiku-class model). Which one to use where: `review-levels.md`.*

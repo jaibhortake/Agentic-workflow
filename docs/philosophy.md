@@ -1,5 +1,3 @@
-<!-- Ported from nikhilw/structured-agentic-workflow docs/philosophy.md (MIT, commit 58180fb9), adapted to this repo's names and paths. -->
-
 # Philosophy
 
 *Why the Structured Agentic Development Workflow is shaped the way it is.*

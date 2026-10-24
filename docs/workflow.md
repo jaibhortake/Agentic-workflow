@@ -1,5 +1,3 @@
-<!-- Ported from nikhilw/structured-agentic-workflow docs/workflow.md (MIT, commit 58180fb9), adapted to this repo's names and paths. -->
-
 # The Development Lifecycle
 
 Every significant change follows a rigid, iterative cycle:

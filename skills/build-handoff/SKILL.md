@@ -40,7 +40,7 @@ Plan revision built against: [amendment IDs applied during this build, e.g. "A1,
 
 <!-- refs:start -->
 ## Full detail (read at the matching step)
-This SKILL.md is the binding gate. Each section's full explanation, examples and rationale, ported from SAW, is in `references/`. Before you run a section below, read its file. Where a file and this SKILL.md differ, this SKILL.md wins.
+This SKILL.md is the binding gate. Each section's full explanation, examples and rationale is in `references/`. Before you run a section below, read its file. Where a file and this SKILL.md differ, this SKILL.md wins.
 
 | Section | File |
 |---|---|

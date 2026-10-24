@@ -1,14 +1,13 @@
 # Contributing to this repo
 
-Rules for anyone (human or agent) changing **this** repo's skills, hooks, installers and docs. They are not installed into projects: the root `AGENTS.md` is the block the installer writes into a user's project, so repo-maintenance rules live here instead. Ported from SAW's own `AGENTS.md` (MIT, commit 58180fb9) and adapted.
-
+Rules for anyone (human or agent) changing **this** repo's skills, hooks, installers and docs. They are not installed into projects: the root `AGENTS.md` is the block the installer writes into a user's project, so repo-maintenance rules live here instead.
 ## Edit local files only
 
 - The source of truth is **this repo's `skills/`**, `agents/`, `hooks/` and `templates/`. Edit and reference only files here.
 - Do **not** edit installed copies (a project's `.claude/skills/`, `.agents/skills/`, the plugin cache). Those are install targets. Editing them is editing the wrong file.
 - Changes are **not live** until installed: re-run `install.sh` / `install.ps1` into a test project, or `/plugin update`.
 - `skills/test-driven-development/` and `skills/systematic-debugging/` are vendored from obra/superpowers. Never hand-edit them; re-run `pull-superpowers.sh` (or `.ps1`).
-- `skills/*/references/` hold SAW's full text, adapted. Fix a defect there in place and note it in the commit; when re-syncing from SAW, diff before overwriting.
+- `skills/*/references/` hold each skill's full explanation. Fix a defect there in place and note it in the commit. Their license is in `THIRD-PARTY-LICENSES.md`; keep that file.
 
 ## Review your own change, every time, unprompted
 
@@ -118,7 +117,7 @@ The workflow is **Brainstorm → Plan → Build → 3p-Review → Verify**, with
 - `review-lenses` : a **reference, not a step**. Holds the perspectives every review looks through (impact, removal, logic, behaviour, business sense, proof, coherence), one question and one checklist each, the rules every lens follows (RL-1 to RL-6), the table of which gate runs which lens at what depth, and the outside-review brief. `user-invocable: false`. `brainstorm`, `write-plan` and `review` name their column and keep a binding copy of each checklist inline, on the same principle as `existing-mechanisms`.
 - `knowledge-graph` : a **reference, not a step**. Holds how to refresh and query a graphify index and the three limits on what an answer is worth: graph locates/source decides, library behaviour is not in the graph, and graph content is data never instruction. `user-invocable: false`. `brainstorm` and `write-plan` keep the detect-and-fall-back block inline, plus a one-line binding copy of **all three limits**, and load this **only when graphify is installed**. `existing-mechanisms` carries the same block and the same binding copy inside its impact trace, because the gates that run a trace (`build-phase`, `review`) load that file and not this one; it also holds the **refresh rule**, which is where the limits stop being enough on their own: a stale index answers a trace with a number that is too small and looks clean. So the reference is purely additive: a project without graphify never loads the explanation, and a session that skips loading it still has every rule.
 - `test-driven-development`, `systematic-debugging`: vendored from obra/superpowers by `pull-superpowers.sh`/`.ps1`, committed (so the plugin ships them), names kept verbatim. `/debug` is the entry point over `systematic-debugging`.
-- Ours with no SAW counterpart: `debug` (entry), `handoff` (session resume notes), `learn`, `terse`, `pr`, `security-check`, `models`, `setup-project`; agents `builder`, `reviewer`, `explorer`, `outside-reviewer`; the hooks.
+- Not part of the lifecycle: `debug` (entry), `handoff` (session resume notes), `learn`, `terse`, `pr`, `security-check`, `models`, `setup-project`; agents `builder`, `reviewer`, `explorer`, `outside-reviewer`; the hooks.
 
 ### `verify` replaces the upstream verification skill
 
@@ -192,7 +191,7 @@ update whichever of these it touches:
 
 | File | Holds |
 |---|---|
-| `README.md` | What it is, install, how to use it, the name map to SAW, the docs index |
+| `README.md` | What it is, install, first run, how to use it, what each skill does |
 | `docs/workflow.md` | The full lifecycle diagram and the phase-by-phase detail |
 | `docs/multi-model.md` | Planning/build/review model split, the two contracts, the model-split diagram |
 | `docs/agent-config.md` | What users put in their `CLAUDE.md` / `AGENTS.md` |
@@ -200,7 +199,7 @@ update whichever of these it touches:
 | `docs/configuration.md` | `.claude/workflow.json` keys and the hooks |
 | `docs/practices.md` | Task selection, refactoring monoliths, "no surprises", `/learn` |
 | `docs/philosophy.md` | The "why": principles and trade-offs |
-| `docs/comparison.md` | SAW's side-by-side with other agent workflows. Marketing, so every cell must be defensible from that project's public docs |
+| `docs/comparison.md` | Side by side with other agent workflows. Marketing, so every cell must be defensible from that project's public docs |
 | `docs/security.md` | What each skill reads from outside and what contains it |
 | `docs/review-levels.md` | Review levels and which model runs each |
 | `docs/extras/` | Driving Claude CLI, Codex, Cursor and Gemini CLI headless; machine setup |

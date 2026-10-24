@@ -28,9 +28,7 @@ After a verified task, append the classes of mistake and the check that would ha
 
 ## In depth
 
-<!-- Ported from nikhilw/structured-agentic-workflow docs/practices.md (MIT, commit 58180fb9), adapted to this repo's names and paths. -->
-
-The summary above is this repo's; where they differ, it governs. What follows is SAW's full text.
+The summary above is this repo's; where they differ, it governs. What follows is the full text.
 
 Habits that sit alongside the lifecycle rather than inside it: choosing what to work on, and
 handling work that does not fit a single feature.

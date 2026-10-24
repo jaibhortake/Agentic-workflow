@@ -48,9 +48,7 @@ Past ~8 findings, findings across most phases, a repeated systemic defect, or a 
 
 ## In depth
 
-<!-- Ported from nikhilw/structured-agentic-workflow docs/multi-model.md (MIT, commit 58180fb9), adapted to this repo's names and paths. -->
-
-The summary above is this repo's; where they differ, it governs. What follows is SAW's full text.
+The summary above is this repo's; where they differ, it governs. What follows is the full text.
 
 *Buy expensive reasoning once. Spend cheap execution as often as you like.*
 

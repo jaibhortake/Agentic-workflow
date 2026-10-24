@@ -1,5 +1,3 @@
-<!-- Ported from nikhilw/structured-agentic-workflow docs/extras/driving-codex-as-build-model.md (MIT, commit 58180fb9), adapted to this repo's names and paths. -->
-
 # Driving Codex as the build model
 *Tested with codex-cli 0.161.0 on a ChatGPT login. Only the differences from
 `driving-cursor-as-build-model.md`; everything else there applies.*

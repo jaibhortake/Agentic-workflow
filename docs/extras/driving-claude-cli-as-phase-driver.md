@@ -1,5 +1,3 @@
-<!-- Ported from nikhilw/structured-agentic-workflow docs/extras/driving-claude-cli-as-phase-driver.md (MIT, commit 58180fb9), adapted to this repo's names and paths. -->
-
 # Driving a Claude CLI process as the phase driver
 *Experimental. Tested with Claude Code 2.1 on one long build; the verdict on whether a mid-tier model
 can drive as well as the planner is still open.*

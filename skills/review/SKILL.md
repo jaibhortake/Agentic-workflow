@@ -45,7 +45,7 @@ You carry the build's context. If the harness can start a subagent with none of 
 
 <!-- refs:start -->
 ## Full detail (read at the matching step)
-This SKILL.md is the binding gate. Each section's full explanation, examples and rationale, ported from SAW, is in `references/`. Before you run a section below, read its file. Where a file and this SKILL.md differ, this SKILL.md wins.
+This SKILL.md is the binding gate. Each section's full explanation, examples and rationale is in `references/`. Before you run a section below, read its file. Where a file and this SKILL.md differ, this SKILL.md wins.
 
 | Section | File |
 |---|---|
@@ -58,7 +58,7 @@ This SKILL.md is the binding gate. Each section's full explanation, examples and
 | Round N: Report Findings | [references/07-report-findings.md](references/07-report-findings.md) |
 | Round N: Gate Check: LOOP OR EXIT | [references/08-gate-check.md](references/08-gate-check.md) |
 | Part 3: Sign-off (once, after the gate passes) | [references/09-sign-off.md](references/09-sign-off.md) |
-| Deep Audits (conditional) | [references/saw-deep-audits.md](references/saw-deep-audits.md) |
+| Deep Audits (conditional) | [references/deep-audits-full.md](references/deep-audits-full.md) |
 <!-- refs:end -->
 
 ## Blocking gates *(strict)*

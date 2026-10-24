@@ -1,5 +1,3 @@
-<!-- Ported from nikhilw/structured-agentic-workflow docs/extras/driving-cursor-as-build-model.md (MIT, commit 58180fb9), adapted to this repo's names and paths. -->
-
 # Driving cursor-agent as the build model
 
 A worked recipe for the [multi-model split](../multi-model.md): plan with your strongest

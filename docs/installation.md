@@ -1,7 +1,6 @@
 # Installation reference
 
-The [README](../README.md) has the short version. This page covers per-tool targets, both installers, the Claude Code plugin, the full skill inventory and what's vendored. Structure follows SAW's `docs/installation.md`; the mechanics are this repo's.
-
+The [README](../README.md) has the short version. This page covers per-tool targets, both installers, the Claude Code plugin, the full skill inventory and what's vendored.
 ## Install into a project
 
 ```bash
@@ -36,37 +35,7 @@ A re-install keeps your `.claude/workflow.json`, so new keys don't appear in it.
 
 ## The skills
 
-| Ours | SAW | Source | What it does |
-|---|---|---|---|
-| `workflow` | `agentic-workflow` | this repo (SAW-based) | Entry point: sizes S/M/L, routes, holds AW-1..30 |
-| `workflow-config` | `workflow-config` | this repo (SAW-based) | Preferences in `.claude/workflow.json` |
-| `brainstorm` | `brainstorm` | this repo (SAW-based) | Explore, challenge, decision doc |
-| `decision-summary` | `decision-summary` | this repo (SAW-based) | Plain-words recap of what's decided; changes nothing |
-| `write-plan` | `write-plan` | this repo (SAW-based) | Phased plan plus the ten review passes |
-| `build-phase` | `build-phase` | this repo (SAW-based) | Plan review, TDD, scoped tests, self-review, per phase |
-| `build-model` | `build-model` | this repo (SAW-based) | Dedicated builder: all phases, review, handoff, stop |
-| `review` | `3p-review` | this repo (SAW-based) | Third-person review to zero findings; Rework Brief when too much |
-| `build-handoff` | `handoff-summary` | this repo (SAW-based) | Fixed-format Build Handoff Summary |
-| `verify` | `verify-completion` | this repo (SAW-based) | Final gate: fresh suite, requirements tick-off, drift audit |
-| `compact-brief` | `compact-brief` | this repo (SAW-based) | Compact command plus resume brief |
-| `triage` | `triage` | this repo (SAW-based) | Next task, minimising context thrash |
-| `backlog` | `github-backlog` | this repo (SAW-based) | GitHub issues and Projects |
-| `test-scope` | `test-scope` | this repo (SAW-based) | Reference: test rungs, citable runs, what a run may execute |
-| `existing-mechanisms` | `existing-mechanisms` | this repo (SAW-based) | Reference: the eight questions, impact trace, inventory |
-| `review-lenses` | `review-lenses` | this repo (SAW-based) | Reference: review lenses and the outside-review brief |
-| `knowledge-graph` | `knowledge-graph` | this repo (SAW-based) | Reference: graphify use and limits (only if installed) |
-| `debug` | `/systematic-debugging` | this repo | Entry point over `systematic-debugging`, plus a regression test per fix |
-| `test-driven-development` | same | [superpowers](https://github.com/obra/superpowers) (vendored) | Red, green, refactor |
-| `systematic-debugging` | same | [superpowers](https://github.com/obra/superpowers) (vendored) | Four-phase root-cause investigation |
-| `handoff` | (none) | this repo | Session resume notes for a fresh session or teammate |
-| `learn` | (none) | this repo | Lessons from a verified task into `docs/lessons.md` |
-| `terse` | (SAW's caveman setting) | this repo | Terse output mode |
-| `pr` | (none) | this repo | PR title and body from the plan and verify evidence |
-| `security-check` | (none) | this repo | Pre-PR security pass |
-| `models` | (none) | this repo | Model per role |
-| `setup-project` | (none) | this repo | Fill `CLAUDE.md` (or AGENTS.md's Project section) and `workflow.json` |
-
-"SAW-based" means the `SKILL.md` is this repo's binding version and `references/` holds SAW's full text for that skill, adapted to these names and paths. Every skill folder travels whole, so its `references/` and supporting files always come along.
+Every skill, with what it does, is listed in the [README](../README.md#what-each-skill-does). Each skill folder travels whole, so its `references/` and supporting files always come along.
 
 ### Vendored, and retired
 - `test-driven-development` and `systematic-debugging` come from obra/superpowers through `pull-superpowers.sh` / `pull-superpowers.ps1`. They're committed under `skills/` (each with its `LICENSE` and a `SOURCE.md` naming the commit), so the plugin ships them. Don't edit them by hand; re-run the script.
