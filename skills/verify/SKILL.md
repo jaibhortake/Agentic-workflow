@@ -15,6 +15,29 @@ You stand at the **final gate**. Nothing downstream checks your work; what you s
 - **Never fix code from inside this gate.** A gate that repairs what it measures has stopped measuring, and a fix made here is one nothing re-reviews or re-runs. Code gaps go back to build.
 - **Never edit the decision doc or plan to make a finding disappear.** Writing is granted for exactly one act: **appending** a dated entry to an `## Amendments` section, after you reported the drift and the human accepted it. Not before, not silently, never over existing text.
 
+<!-- refs:start -->
+## Full detail (read at the matching step)
+This SKILL.md is the binding gate. Each section's full explanation, examples and rationale, ported from SAW, is in `references/`. Before you run a section below, read its file. Where a file and this SKILL.md differ, this SKILL.md wins.
+
+| Section | File |
+|---|---|
+| Verify Completion | [references/01-intro.md](references/01-intro.md) |
+| What this gate is, and is not | [references/02-what-this-gate-is-and.md](references/02-what-this-gate-is-and.md) |
+| The Iron Law | [references/03-the-iron-law.md](references/03-the-iron-law.md) |
+| The Gate Function | [references/04-the-gate-function.md](references/04-the-gate-function.md) |
+| Part 1: The suite, true right now | [references/05-the-suite-true-right-now.md](references/05-the-suite-true-right-now.md) |
+| Part 2: Requirements tick-off (plan → code) | [references/06-requirements-tick-off.md](references/06-requirements-tick-off.md) |
+| Part 3: The drift audit (decision → plan → code) | [references/07-the-drift-audit.md](references/07-the-drift-audit.md) |
+| Part 4: The completion report | [references/08-the-completion-report.md](references/08-the-completion-report.md) |
+| Common failures | [references/09-common-failures.md](references/09-common-failures.md) |
+| Red flags, stop | [references/10-red-flags-stop.md](references/10-red-flags-stop.md) |
+| Rationalization prevention | [references/11-rationalization-prevention.md](references/11-rationalization-prevention.md) |
+| Key patterns | [references/12-key-patterns.md](references/12-key-patterns.md) |
+| When to apply | [references/13-when-to-apply.md](references/13-when-to-apply.md) |
+| The bottom line | [references/14-the-bottom-line.md](references/14-the-bottom-line.md) |
+| What happens next | [references/15-what-happens-next.md](references/15-what-happens-next.md) |
+<!-- refs:end -->
+
 ## What this gate is
 **Not a second review:** `review` proved the *code* is sound. This proves three things review doesn't: (1) **the suite is green right now** (review may have passed several edits ago); (2) **every requirement was built** (review judges completeness qualitatively; this is line by line); (3) **what shipped is still what was decided** (plans drift: every halt, constraint and reverted phase moves the plan a little, and the accumulated distance from the decision doc is invisible from inside any step; this is the only place the whole chain is read end to end). Check 3 exists for a specific expensive failure: you set out to build one thing, the plan absorbed a dozen reasonable corrections, and what shipped is a different thing nobody noticed for days.
 

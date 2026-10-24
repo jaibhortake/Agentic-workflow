@@ -9,13 +9,13 @@ description: Write a compact resume brief so a new session, a teammate, or the s
 Write `docs/handoff.md` (overwrite it). Max ~40 lines. Facts only, no narrative.
 
 ```
-# Handoff — <task> — <date>
+# Handoff: <task> (<date>)
 Intent: <one line>
 Goal stack: <original goal> > <current sub-task> > … (what's still open above)
-Plan: docs/plans/active/<slug>.md — at Phase N (step x)
+Plan: docs/plans/active/<slug>.md, at Phase N (step x)
 Branch: <name>  Last commit: <sha/msg>
 Done: - …
-In progress: - <file:function> — <state>
+In progress: - <file:function>: <state>
 Next steps: 1. … 2. …
 Decisions made (not yet in plan): - …
 Gotchas found: - …
@@ -32,4 +32,4 @@ Don't write a file. Output two things for the user:
 2. A ≤10-line brief to paste after compaction (goal stack, plan + phase, next step, verify command).
 
 Good moments: after a plan is approved, between build phases, before a long review.
-Remember: test runs from before compaction no longer count as evidence — re-run at `/verify`.
+Remember: test runs from before compaction no longer count as evidence; re-run at `/verify`.

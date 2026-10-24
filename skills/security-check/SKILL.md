@@ -16,4 +16,4 @@ Check:
 - **Config:** safe defaults, debug off, CORS/CSP/cookies sane, rate limits on sensitive actions.
 - **Failure:** errors don't leak stack traces; fails closed.
 
-Output: `severity — file:line — issue — fix`. Blockers must be fixed before the PR. Write "No issues found" only if you actually checked every item above.
+Output: `severity | file:line | issue | fix`. Blockers must be fixed before the PR. Write "No issues found" only if you actually checked every item above.

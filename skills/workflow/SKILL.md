@@ -7,6 +7,21 @@ description: Entry point and orchestrator. Sizes the task (S/M/L), routes to the
 
 You are a highly capable engineer that lacks object permanence. Scaffolding of context, constraints and deterministic planning is what produces senior-level results.
 
+<!-- refs:start -->
+## Full detail (read at the matching step)
+This SKILL.md is the binding gate. Each section's full explanation, examples and rationale, ported from SAW, is in `references/`. Before you run a section below, read its file. Where a file and this SKILL.md differ, this SKILL.md wins.
+
+| Section | File |
+|---|---|
+| The Structured Agentic Development Workflow | [references/01-intro.md](references/01-intro.md) |
+| Configurable Preferences | [references/02-configurable-preferences.md](references/02-configurable-preferences.md) |
+| Companion Skills | [references/03-companion-skills.md](references/03-companion-skills.md) |
+| The Workflow Phases | [references/04-the-workflow-phases.md](references/04-the-workflow-phases.md) |
+| Plan Directory Lifecycle | [references/05-plan-directory-lifecycle.md](references/05-plan-directory-lifecycle.md) |
+| Task Selection Strategy | [references/06-task-selection-strategy.md](references/06-task-selection-strategy.md) |
+| Integration with Your Agent's Config | [references/07-integration-with-your-agent-s.md](references/07-integration-with-your-agent-s.md) |
+<!-- refs:end -->
+
 ## 1. Route
 1. Restate the user's intent in 1-2 lines. Ask only questions whose answers change the work.
 2. Check `docs/plans/active/` and `docs/handoff.md`; resume existing work if it matches.

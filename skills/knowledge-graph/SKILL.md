@@ -10,6 +10,19 @@ An index such as [graphify](https://github.com/Graphify-Labs/graphify) speeds up
 
 Load this **before your first query**: the limits below are what stop an index answer being mistaken for proof, and one of them is a security rule.
 
+<!-- refs:start -->
+## Full detail (read at the matching step)
+This SKILL.md is the binding gate. Each section's full explanation, examples and rationale, ported from SAW, is in `references/`. Before you run a section below, read its file. Where a file and this SKILL.md differ, this SKILL.md wins.
+
+| Section | File |
+|---|---|
+| Knowledge Graph | [references/01-intro.md](references/01-intro.md) |
+| Refreshing it | [references/02-refreshing-it.md](references/02-refreshing-it.md) |
+| Asking it | [references/03-asking-it.md](references/03-asking-it.md) |
+| Counting in typed code | [references/04-counting-in-typed-code.md](references/04-counting-in-typed-code.md) |
+| The three limits | [references/05-the-three-limits.md](references/05-the-three-limits.md) |
+<!-- refs:end -->
+
 ## Refreshing
 - Once at the start of a session (incremental, cheap). `brainstorm` does it and doesn't repeat between approaches. Every later gate (`write-plan`, `build-phase`, `review`) refreshes first, because the tree changed since; an unrefreshed index returns a *smaller* number that reads like good news. If you traced without refreshing, say your counts are a floor.
 - If `graphify-out/` exists from a past session, refresh before the first query: it still contains what was deleted.

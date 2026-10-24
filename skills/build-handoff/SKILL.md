@@ -10,6 +10,20 @@ The single artifact that carries a completed, reviewed build to the next reader.
 Follow the template exactly: same headings, same order, same casing. Don't rename, add or drop sections or replace it with prose; it's a fixed format so the consuming model can parse it. A section with nothing is filled with "None.", never removed.
 
 ```
+
+<!-- refs:start -->
+## Full detail (read at the matching step)
+This SKILL.md is the binding gate. Each section's full explanation, examples and rationale, ported from SAW, is in `references/`. Before you run a section below, read its file. Where a file and this SKILL.md differ, this SKILL.md wins.
+
+| Section | File |
+|---|---|
+| Handoff Summary | [references/01-intro.md](references/01-intro.md) |
+| When this runs | [references/02-when-this-runs.md](references/02-when-this-runs.md) |
+| Your only job | [references/03-your-only-job.md](references/03-your-only-job.md) |
+| Rules | [references/04-rules.md](references/04-rules.md) |
+| What happens next | [references/05-what-happens-next.md](references/05-what-happens-next.md) |
+<!-- refs:end -->
+
 ## Build Handoff Summary
 
 Plan: [plan file path]

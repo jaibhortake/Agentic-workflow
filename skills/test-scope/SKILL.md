@@ -10,6 +10,21 @@ Two definitions every gate depends on and none may restate: **the ladder** (how 
 
 **Why:** without it each gate demands the full suite independently, because none sees another's runs, and a three-phase plan pays for six or seven full runs re-proving untouched code. The ladder gives a vocabulary narrower than "everything"; the citation rule lets the last gates share one run. Neither is permission to prove less. Both are accounting, and the price is bookkeeping: a narrow run is acceptable only because it is **recorded as narrow** and stays visible to every later reader.
 
+<!-- refs:start -->
+## Full detail (read at the matching step)
+This SKILL.md is the binding gate. Each section's full explanation, examples and rationale, ported from SAW, is in `references/`. Before you run a section below, read its file. Where a file and this SKILL.md differ, this SKILL.md wins.
+
+| Section | File |
+|---|---|
+| Test Scope | [references/01-intro.md](references/01-intro.md) |
+| Why this exists | [references/02-why-this-exists.md](references/02-why-this-exists.md) |
+| The ladder | [references/03-the-ladder.md](references/03-the-ladder.md) |
+| What a run may execute | [references/04-what-a-run-may-execute.md](references/04-what-a-run-may-execute.md) |
+| Rung by gate | [references/05-rung-by-gate.md](references/05-rung-by-gate.md) |
+| The citable-run rule | [references/06-the-citable-run-rule.md](references/06-the-citable-run-rule.md) |
+| Recording | [references/07-recording.md](references/07-recording.md) |
+<!-- refs:end -->
+
 ## The ladder
 The plan's **Test Commands** block carries the actual commands (per-stack hints in `presets/`).
 

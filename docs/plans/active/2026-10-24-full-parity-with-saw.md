@@ -105,4 +105,5 @@ Rounds: 2 (round 2 changed nothing).
 10. Executability: Phase 9 needs headless `claude -p`; checked at phase start, halt if unavailable.
 
 ## Amendment Log
-None yet.
+### A1 - 2026-10-24 - Phases 2-5 land as one commit
+Phases 2-5 were done by one mechanical port (SAW sections into `references/`, plus an index in each SKILL.md), so they ship as one commit instead of four. Content and proof are unchanged: the scratch checker passes, and every skill's references hold at least SAW's word count. Found while building; this is about packaging, not intent, so the decision doc is untouched.

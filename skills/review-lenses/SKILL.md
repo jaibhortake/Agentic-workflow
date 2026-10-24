@@ -10,6 +10,19 @@ The perspectives every review looks through. `brainstorm` applies them to approa
 
 **Why one at a time:** each question, asked by hand, has found a real, usually critical defect in work already reviewed. A review carrying several questions answers the easiest and reports clean on the rest, and nothing on the page shows which were skipped. So each lens runs alone; what it finds is settled (fixed, or put to the owner where it is theirs to decide) before the next lens looks.
 
+<!-- refs:start -->
+## Full detail (read at the matching step)
+This SKILL.md is the binding gate. Each section's full explanation, examples and rationale, ported from SAW, is in `references/`. Before you run a section below, read its file. Where a file and this SKILL.md differ, this SKILL.md wins.
+
+| Section | File |
+|---|---|
+| Review Lenses | [references/01-intro.md](references/01-intro.md) |
+| Rules for every lens | [references/02-rules-for-every-lens.md](references/02-rules-for-every-lens.md) |
+| The lenses | [references/03-the-lenses.md](references/03-the-lenses.md) |
+| Which gate runs which lens | [references/04-which-gate-runs-which-lens.md](references/04-which-gate-runs-which-lens.md) |
+| Handing a review to an outside model | [references/05-handing-a-review-to-an.md](references/05-handing-a-review-to-an.md) |
+<!-- refs:end -->
+
 ## Rules for every lens (cited as RL-N)
 - **RL-1 One question per lens, run separately.** Don't merge two lenses; don't skip one because another "already looked".
 - **RL-2 Change the angle, not the effort.** Repeating a lens with the same method returns what it returned, and an empty delta reads as clean. On a re-run search on something new: another spelling, the rendered form instead of the identifier, code inward instead of document outward, what the change *creates* instead of what it changes.

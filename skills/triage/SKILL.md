@@ -5,6 +5,21 @@ description: Recommend what to work on next from the handoff file, plans and Git
 
 # Triage
 
+<!-- refs:start -->
+## Full detail (read at the matching step)
+This SKILL.md is the binding gate. Each section's full explanation, examples and rationale, ported from SAW, is in `references/`. Before you run a section below, read its file. Where a file and this SKILL.md differ, this SKILL.md wins.
+
+| Section | File |
+|---|---|
+| Triage: What Should We Work On Next? | [references/01-intro.md](references/01-intro.md) |
+| Your Mission | [references/02-your-mission.md](references/02-your-mission.md) |
+| Step 1: Assess Current Context | [references/03-assess-current-context.md](references/03-assess-current-context.md) |
+| Step 2: Read the Backlog | [references/04-read-the-backlog.md](references/04-read-the-backlog.md) |
+| Step 3: Apply the Selection Strategy | [references/05-apply-the-selection-strategy.md](references/05-apply-the-selection-strategy.md) |
+| Output Format | [references/06-output-format.md](references/06-output-format.md) |
+| The Mindset | [references/07-the-mindset.md](references/07-the-mindset.md) |
+<!-- refs:end -->
+
 ## 1. Assess the context you already have
 What files and modules are loaded? What domain knowledge is established? Fresh start or mid-session? **Switching to work that needs entirely different modules throws away context you already paid for; context thrash is the enemy.**
 

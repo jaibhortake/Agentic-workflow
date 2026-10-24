@@ -1,7 +1,7 @@
 # Notice
 
 The strict-mode practices in this repository (frozen intent and the three-comparison drift audit, build halts and amendment logging, the review lenses and gates, the test-scope rungs and citable-run rule, the existing-mechanisms trace and inventory, the build handoff schema, build-model and rework flow, compact briefs, decision summaries, deep audits, knowledge-graph limits, GitHub backlog handling, and the AW/BS/WP/RL rule numbering) are adapted from
-[nikhilw/structured-agentic-workflow](https://github.com/nikhilw/structured-agentic-workflow) (MIT). The skills here are rewritten in our own words and fitted to our S/M/L routing, hooks, plugin packaging and CI; they are not verbatim copies.
+[nikhilw/structured-agentic-workflow](https://github.com/nikhilw/structured-agentic-workflow) (MIT). Each `SKILL.md` here is our own binding version, fitted to our S/M/L routing, hooks, plugin packaging and CI. Each skill's `references/` folder holds SAW's full text for that skill (from commit `58180fb9`), split by section and adapted only in names, paths and config keys (`/3p-review` to `/review`, `docs/discussions/` to `docs/decisions/`, memory to `.claude/workflow.json`, em dashes removed). Where a reference and its `SKILL.md` differ, the `SKILL.md` governs.
 
 Test-first and systematic-debugging ideas, and the Iron Law and rationalization tables in `verify`, come from [obra/superpowers](https://github.com/obra/superpowers) (MIT, Jesse Vincent). Terse output follows Caveman. Planning and verification guidance follows Anthropic's Claude Code best practices.
 

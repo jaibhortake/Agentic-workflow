@@ -10,6 +10,23 @@ Defines what you must prove you understand before proposing, planning or approvi
 
 **Why:** the costly failures are analysis never done, not bad trade-offs: a mechanism that already existed under a name nobody searched, a caller nobody listed, a subsystem left unreachable, a second pathway built beside the first. These questions find something almost every time, so ask them by default.
 
+<!-- refs:start -->
+## Full detail (read at the matching step)
+This SKILL.md is the binding gate. Each section's full explanation, examples and rationale, ported from SAW, is in `references/`. Before you run a section below, read its file. Where a file and this SKILL.md differ, this SKILL.md wins.
+
+| Section | File |
+|---|---|
+| Existing Mechanisms | [references/01-intro.md](references/01-intro.md) |
+| Why this exists | [references/02-why-this-exists.md](references/02-why-this-exists.md) |
+| The eight questions | [references/03-the-eight-questions.md](references/03-the-eight-questions.md) |
+| How to answer | [references/04-how-to-answer.md](references/04-how-to-answer.md) |
+| The ledger | [references/05-the-ledger.md](references/05-the-ledger.md) |
+| The impact trace | [references/06-the-impact-trace.md](references/06-the-impact-trace.md) |
+| The second sweep | [references/07-the-second-sweep.md](references/07-the-second-sweep.md) |
+| The self-duplication inventory | [references/08-the-self-duplication-inventory.md](references/08-the-self-duplication-inventory.md) |
+| Where this is answered | [references/09-where-this-is-answered.md](references/09-where-this-is-answered.md) |
+<!-- refs:end -->
+
 ## The eight questions
 Answer every one, or write "does not apply, because ...". Silence reads as "checked and clean" and that is how the gap ships.
 

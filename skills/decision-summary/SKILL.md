@@ -19,3 +19,17 @@ Sections (omit empty ones):
 4. **What it costs:** effort, risk, trade-offs.
 5. **What we ruled out:** options rejected and why.
 6. **Changed along the way:** differences from the original ask.
+
+<!-- refs:start -->
+## Full detail (read at the matching step)
+This SKILL.md is the binding gate. Each section's full explanation, examples and rationale, ported from SAW, is in `references/`. Before you run a section below, read its file. Where a file and this SKILL.md differ, this SKILL.md wins.
+
+| Section | File |
+|---|---|
+| Decision Summary | [references/01-intro.md](references/01-intro.md) |
+| Where it comes from | [references/02-where-it-comes-from.md](references/02-where-it-comes-from.md) |
+| How it is written | [references/03-how-it-is-written.md](references/03-how-it-is-written.md) |
+| The shape | [references/04-the-shape.md](references/04-the-shape.md) |
+| Afterwards | [references/05-afterwards.md](references/05-afterwards.md) |
+<!-- refs:end -->
+

@@ -22,6 +22,21 @@ Not configurable, because they are core guarantees: **verification and its drift
 
 Output:
 ```
+
+<!-- refs:start -->
+## Full detail (read at the matching step)
+This SKILL.md is the binding gate. Each section's full explanation, examples and rationale, ported from SAW, is in `references/`. Before you run a section below, read its file. Where a file and this SKILL.md differ, this SKILL.md wins.
+
+| Section | File |
+|---|---|
+| Workflow Configuration | [references/01-intro.md](references/01-intro.md) |
+| Your Mission | [references/02-your-mission.md](references/02-your-mission.md) |
+| Supported Preferences | [references/03-supported-preferences.md](references/03-supported-preferences.md) |
+| How to Persist | [references/04-how-to-persist.md](references/04-how-to-persist.md) |
+| What You Cannot Configure | [references/05-what-you-cannot-configure.md](references/05-what-you-cannot-configure.md) |
+| Output | [references/06-output.md](references/06-output.md) |
+<!-- refs:end -->
+
 ## Workflow configuration updated
 - Rigor: [standard | strict]
 - Testing methodology: [tdd | bdd]

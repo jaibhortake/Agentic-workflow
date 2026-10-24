@@ -17,7 +17,7 @@ Roles → where the model is set:
 No arguments: print the table with the current values (read the 3 frontmatter lines) and the tip below. Stop.
 
 With `role=value` arguments:
-1. Values: `inherit`, an alias (`opus`, `sonnet`, `haiku`, `fable`), or a full model id. Don't validate further — the user may have access to models you don't know.
+1. Values: `inherit`, an alias (`opus`, `sonnet`, `haiku`, `fable`), or a full model id. Don't validate further: the user may have access to models you don't know.
 2. For build/review/explore, edit only the `model:` line of the matching file in the **project's** `.claude/agents/`. If the agent comes from the plugin and the file doesn't exist, copy the plugin's agent file there first (project agents override plugin agents).
 3. `plan=…` → tell the user to run `/model <value>`; it's a session setting.
 4. Record the choice in `.claude/workflow.json` under `"models"` so teammates see it. Personal-only choice → put it in `.claude/agents/` of `~/.claude` instead and say so.
