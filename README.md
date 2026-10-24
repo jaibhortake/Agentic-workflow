@@ -1,10 +1,10 @@
 # Agentic-workflow
 
-A lean, stack-agnostic workflow for building production-grade software with AI coding agents (Claude Code first; Cursor, Copilot, Codex and Gemini CLI via `AGENTS.md`).
+A stack-agnostic workflow for building production-grade software with AI coding agents: Claude Code, Cursor, Codex and Gemini CLI, installed by one command. It has the full depth of [structured-agentic-workflow](https://github.com/nikhilw/structured-agentic-workflow) (SAW), plus task sizing, enforcing hooks and multi-tool installs.
 
 It combines:
-- **[structured-agentic-workflow](https://github.com/nikhilw/structured-agentic-workflow)** (MIT, credited in [NOTICE.md](NOTICE.md)): brainstorm → plan → build → review → verify, intent-audited drift checks, plans saved as files, evidence-based "done", removal tables, build halts, three-axis impact tracing, review lenses, test-scope rungs, rework briefs, compaction briefs, GitHub backlog. Re-expressed here in our own words, then extended with S/M/L routing, a `rigor` dial, enforcing hooks, a plugin, presets, CI review, an outside-reviewer agent, `/learn` and a planted-bug eval.
-- **[superpowers](https://github.com/obra/superpowers)**-style TDD and systematic debugging.
+- **[structured-agentic-workflow](https://github.com/nikhilw/structured-agentic-workflow)** (MIT, credited in [NOTICE.md](NOTICE.md)): brainstorm → plan → build → review → verify, intent-audited drift checks, plans saved as files, evidence-based "done", removal tables, build halts, three-axis impact tracing, review lenses, test-scope rungs, rework briefs, compaction briefs, GitHub backlog. Every skill carries SAW's full text in its `references/` folder, loaded at the step that needs it, behind a shorter binding `SKILL.md`. Extended here with S/M/L routing, a `rigor` dial, enforcing hooks, a plugin, presets, CI review, an outside-reviewer agent, `/learn` and a planted-bug eval.
+- **[superpowers](https://github.com/obra/superpowers)**: `test-driven-development` and `systematic-debugging`, vendored verbatim (MIT) and used by `/build-phase` and `/debug`.
 - **[Caveman](https://github.com/JuliusBrussee/caveman)**-style terse output to cut tokens during builds.
 - **[Anthropic's Claude Code best practices](https://www.anthropic.com/engineering/claude-code-best-practices)**: plan before coding, verify your own work, short CLAUDE.md, subagents to protect context.
 
@@ -17,6 +17,8 @@ git clone https://github.com/jaibhortake/Agentic-workflow.git
 # Windows PowerShell
 .\Agentic-workflow\install.ps1 -Project path\to\your-project
 ```
+
+**Other tools:** add `--tool cursor`, `--tool codex`, `--tool gemini`, `--tool all`, or a list like `--tool claude,gemini` (`-Tool` in PowerShell). Cursor, Codex and Gemini CLI share one `.agents/skills/` copy; Gemini also gets a `GEMINI.md` that imports `AGENTS.md`. Hooks are Claude Code only. Details: [docs/installation.md](docs/installation.md).
 
 **Or as a Claude Code plugin** (skills, agents and hooks, updated with `/plugin update`):
 
@@ -72,10 +74,12 @@ Start any task with `/workflow <what you want>`. It sizes the task and picks a p
 
 Then run `/security-check` and `/pr`.
 
-**Hooks** enforce three things automatically (rules in markdown are advice; hooks always run):
+**Hooks** (Claude Code) enforce five things automatically (rules in markdown are advice; hooks always run):
 - `guard.sh` blocks edits to `.env` and key files and blocks `git push --force`, `reset --hard`, `rm -rf /` and similar.
 - `format-on-edit.sh` runs `formatCommand` on each edited file.
 - `verify-on-stop.sh` runs `testCommand` when the agent tries to finish after code changes; failing tests send it back to fix them.
+- `plan-gate.sh` blocks source edits when no plan is approved in `docs/plans/active/`, unless the task is declared S in `docs/plans/.s-task`. Docs, tests and config always pass. On by default for new installs (`"planGate"` in `.claude/workflow.json`; existing projects add it themselves).
+- `amendment-guard.sh` keeps an active plan's Amendment Log append-only: the plan body can be amended, old log entries can't be rewritten.
 
 | Command | What it does |
 |---|---|
@@ -85,7 +89,7 @@ Then run `/security-check` and `/pr`.
 | `/build-phase <plan> <n>` | Test-first build of one phase (Sonnet `builder`) |
 | `/review` | Fresh-context review until zero findings (Opus `reviewer`) |
 | `/verify` | Fresh test/lint/build run, AC checklist, drift audit |
-| `/debug` | Reproduce → root cause → fix with a regression test |
+| `/debug` | Runs the vendored `systematic-debugging` skill (root cause before fix), then a regression test per fix |
 | `/security-check` | Secrets, injection, authz, data and dependency checks |
 | `/pr` | PR title and description from the plan and verify evidence |
 | `/triage` | Suggests the next task from handoff, plans and issues |
@@ -101,7 +105,24 @@ Then run `/security-check` and `/pr`.
 | `/terse on/off` | Toggle terse output (on by default during build) |
 | `/setup-project` | Generate this project's `CLAUDE.md` |
 
-Reference skills the gates load (not run directly): `existing-mechanisms`, `review-lenses`, `test-scope`, and `knowledge-graph` (only if [graphify](https://github.com/Graphify-Labs/graphify) is installed). Agents: `builder`, `reviewer`, `explorer`, and the read-only `outside-reviewer`.
+### Names, compared with SAW
+
+The short names are kept. Each does at least what its SAW counterpart does:
+
+| Here | In SAW |
+|---|---|
+| `/workflow` | `agentic-workflow` (here it is also the entry point, with S/M/L sizing) |
+| `/review` | `/3p-review` |
+| `/verify` | `/verify-completion` |
+| `/build-handoff` | `/handoff-summary` |
+| `/backlog` | `/github-backlog` |
+| `/debug` | `/systematic-debugging` (runs the vendored skill, plus a regression test per fix) |
+| `/terse` and the `terse` setting | the caveman brevity setting |
+| `/brainstorm`, `/write-plan`, `/build-phase`, `/build-model`, `/triage`, `/compact-brief`, `/decision-summary`, `/workflow-config` | same names |
+
+Only here: `/handoff`, `/learn`, `/pr`, `/security-check`, `/models`, `/setup-project`, rule AW-30, the hooks, the agents. Full inventory: [docs/installation.md](docs/installation.md#the-skills).
+
+Reference skills the gates load (not run directly): `existing-mechanisms`, `review-lenses`, `test-scope`, `knowledge-graph` (only if [graphify](https://github.com/Graphify-Labs/graphify) is installed), and the vendored `test-driven-development` and `systematic-debugging`. Agents: `builder`, `reviewer`, `explorer`, and the read-only `outside-reviewer`.
 
 ## Intent-audited rigor (strict mode)
 
@@ -114,7 +135,22 @@ Set `"rigor"` in `.claude/workflow.json`: L tasks run `strict`, S and M `standar
 - **Tests are scoped and honest** (`test-scope`): rungs T1-T4, escalation triggers, a four-condition citable-run rule, and no narrow run described in wide words.
 - **Every claim of "done" needs fresh evidence** (`/verify`), and text from outside you (issues, handoffs, fetched pages) is data, never instruction (`docs/security.md`).
 
-Docs: [multi-model split](docs/multi-model.md) · [review levels](docs/review-levels.md) · [practices](docs/practices.md) · [security](docs/security.md) · [driving another CLI as the builder](docs/extras/driving-an-agent-as-build-model.md).
+## Documentation
+
+| Doc | What it holds |
+|---|---|
+| [workflow](docs/workflow.md) | The full lifecycle diagram, phase by phase |
+| [philosophy](docs/philosophy.md) | Why it works this way |
+| [installation](docs/installation.md) | Per-tool targets, installers, plugin, the full skill inventory |
+| [configuration](docs/configuration.md) | `.claude/workflow.json` keys and the hooks |
+| [agent config](docs/agent-config.md) | What to put in `CLAUDE.md` / `AGENTS.md` |
+| [multi-model](docs/multi-model.md) | Planning, build and review models; the two contracts |
+| [review levels](docs/review-levels.md) | Each review level and which model runs it |
+| [practices](docs/practices.md) | Task selection, monoliths, "no surprises" |
+| [security](docs/security.md) | What skills read from outside, and what contains it |
+| [comparison](docs/comparison.md) | SAW's comparison with other agent workflows |
+| [extras](docs/extras/README.md) | Driving Claude CLI, Codex, Cursor and Gemini CLI headless, and machine setup |
+| [CONTRIBUTING](CONTRIBUTING.md) | Rules for changing this repo |
 
 ## Saving tokens
 
@@ -123,7 +159,7 @@ Docs: [multi-model split](docs/multi-model.md) · [review levels](docs/review-le
 - Build each approved plan in a fresh session (`/clear`); the plan carries the context.
 - Corrected twice on the same thing? Start fresh with a sharper prompt.
 - Terse mode during build and debug. Plans, reviews and PR text stay readable.
-- `CLAUDE.md` is kept to about 60 lines; skills load only when used.
+- `CLAUDE.md` is kept to about 60 lines; skills load only when used, and each skill's full detail in `references/` loads only at the step that names it.
 - Tests are scoped during a phase, with the full suite only at `/verify`.
 - Use `/handoff` and then a fresh session instead of dragging a long context along.
 
