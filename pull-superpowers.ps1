@@ -10,6 +10,8 @@ $RepoUrl = "https://github.com/obra/superpowers.git"
 $Skills = @("test-driven-development", "systematic-debugging")
 # Skills of theirs we never install: our /verify replaces verification-before-completion.
 $RetiredSkills = @("verification-before-completion")
+# Upstream's records of how they tested their skills; nothing reads them at runtime, so they are not shipped.
+$Exclude = @("CREATION-LOG.md", "test-academic.md", "test-pressure-*.md")
 
 $Tmp = Join-Path ([System.IO.Path]::GetTempPath()) ("sp-" + [guid]::NewGuid())
 try {
@@ -23,6 +25,7 @@ try {
     if (-not (Test-Path "$Tmp\sp\skills\$s")) { throw "missing upstream skill: $s" }
     if (Test-Path "$Src\skills\$s") { Remove-Item "$Src\skills\$s" -Recurse -Force }
     Copy-Item "$Tmp\sp\skills\$s" "$Src\skills\$s" -Recurse
+    foreach ($x in $Exclude) { Get-ChildItem "$Src\skills\$s" -Recurse -Filter $x | Remove-Item -Force }
     Copy-Item "$Tmp\sp\LICENSE" "$Src\skills\$s\LICENSE"
     $utf8 = New-Object System.Text.UTF8Encoding($false)
     [System.IO.File]::WriteAllText("$Src\skills\$s\SOURCE.md", "Vendored from $RepoUrl at $Commit. Do not edit; re-run pull-superpowers.`n", $utf8)

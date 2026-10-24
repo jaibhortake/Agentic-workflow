@@ -13,6 +13,8 @@ REF="main"
 SKILLS=(test-driven-development systematic-debugging)
 # Skills of theirs we never install: our /verify replaces verification-before-completion.
 RETIRED_SKILLS=(verification-before-completion)
+# Upstream's records of how they tested their skills; nothing reads them at runtime, so they are not shipped.
+EXCLUDE=(CREATION-LOG.md test-academic.md 'test-pressure-*.md')
 
 TMP="$(mktemp -d)"; trap 'rm -rf "$TMP"' EXIT
 git clone -q --filter=blob:none "$REPO_URL" "$TMP/sp"
@@ -23,6 +25,7 @@ for s in "${SKILLS[@]}"; do
   [ -d "$TMP/sp/skills/$s" ] || { echo "missing upstream skill: $s" >&2; exit 1; }
   rm -rf "$SRC/skills/$s"
   cp -R "$TMP/sp/skills/$s" "$SRC/skills/$s"
+  for x in "${EXCLUDE[@]}"; do find "$SRC/skills/$s" -name "$x" -delete; done
   cp "$TMP/sp/LICENSE" "$SRC/skills/$s/LICENSE"
   printf 'Vendored from %s at %s. Do not edit; re-run pull-superpowers.\n' "$REPO_URL" "$COMMIT" > "$SRC/skills/$s/SOURCE.md"
   # Drop the plugin namespace and point their verification reference at our gate.
