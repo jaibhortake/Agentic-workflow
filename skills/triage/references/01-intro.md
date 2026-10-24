@@ -2,6 +2,6 @@
 
 # Triage: What Should We Work On Next?
 
-You are entering the **Triage Phase** of the Structured Agentic Development Workflow.
+You are entering the **Triage Phase** of this workflow.
 
 > **Output style:** Check `terse` in `.claude/workflow.json`. If set, adapt your output brevity to that level while preserving technical accuracy.

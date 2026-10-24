@@ -2,6 +2,6 @@
 
 # GitHub Backlog Management
 
-You are managing the feature and bug backlog on GitHub as part of the **Structured Agentic Development Workflow**.
+You are managing the feature and bug backlog on GitHub as part of this workflow.
 
 > **Output style:** Check `terse` in `.claude/workflow.json`. If set, adapt your output brevity to that level while preserving technical accuracy.

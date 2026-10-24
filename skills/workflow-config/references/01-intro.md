@@ -2,4 +2,4 @@
 
 # Workflow Configuration
 
-You are configuring the **Structured Agentic Development Workflow**.
+You are configuring this workflow.

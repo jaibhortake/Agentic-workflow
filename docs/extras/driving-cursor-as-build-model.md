@@ -62,7 +62,7 @@ up:
 
 ```
 <short unique name for this run>
-You are the build model in the structured agentic development workflow.
+You are the build model in this workflow.
 Load up the skills @AGENTS.md and /build-model, and wait to receive the plan.
 Think critically about the plan: if you find issues or discrepancies during
 implementation, surface them and halt, instead of pushing through or working around it.

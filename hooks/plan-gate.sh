@@ -17,6 +17,13 @@ for root in "$(pwd -W 2>/dev/null)" "$(pwd)"; do
   case "$lower_rel" in "$lower_root"*) rel="${rel:${#root}}"; break ;; esac
 done
 rel="${rel#./}"
+# Collapse "./" and "name/../" so "docs/../src/x.js" can't hide behind an allowed prefix.
+prev=""
+while [ "$prev" != "$rel" ]; do
+  prev="$rel"
+  rel="$(printf '%s' "$rel" | sed -E 's#/\./#/#g; s#(^|/)([^/.][^/]*|\.[^/.][^/]*|\.\.[^/]+)/\.\./#\1#')"
+done
+case "$rel" in ../*) exit 0 ;; esac   # outside the project: not this gate's business
 base="${rel##*/}"
 
 case "$rel" in

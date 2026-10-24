@@ -2,7 +2,7 @@
 
 # Verify Completion
 
-You are standing at the **final gate** of the Structured Agentic Development Workflow. Nothing
+You are standing at the **final gate** of this workflow. Nothing
 downstream checks your work. What you sign here is what ships.
 
 > **Output style:** Check `terse` in `.claude/workflow.json`. If set, adapt your output

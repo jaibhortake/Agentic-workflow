@@ -2,7 +2,7 @@
 
 # Brainstorm Phase
 
-You are entering the **Brainstorm Phase** of the Structured Agentic Development Workflow.
+You are entering the **Brainstorm Phase** of this workflow.
 
 > **Output style:** Check `terse` in `.claude/workflow.json`. If set, adapt your output brevity to that level while preserving technical accuracy.
 

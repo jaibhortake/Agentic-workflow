@@ -32,7 +32,7 @@ start, so the agent can *suggest* phase transitions instead of waiting to be tol
 ```markdown
 ## Workflow Skills
 
-ALWAYS follow the Structured Agentic Development Workflow. These skills are installed
+ALWAYS follow this workflow. These skills are installed
 globally and define the development lifecycle:
 
 - `workflow`; orchestrates the full lifecycle; suggests phase transitions automatically
@@ -129,7 +129,7 @@ Copy this into `CLAUDE.md` or `AGENTS.md` and fill in the project-specific parts
 
 ## Workflow Skills
 
-ALWAYS follow the Structured Agentic Development Workflow. These skills are installed
+ALWAYS follow this workflow. These skills are installed
 globally and define the development lifecycle:
 
 - `workflow`; orchestrates the full lifecycle; suggests phase transitions automatically

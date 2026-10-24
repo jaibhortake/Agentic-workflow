@@ -13,7 +13,7 @@ This SKILL.md is the binding gate. Each section's full explanation, examples and
 
 | Section | File |
 |---|---|
-| The Structured Agentic Development Workflow | [references/01-intro.md](references/01-intro.md) |
+| The Workflow | [references/01-intro.md](references/01-intro.md) |
 | Configurable Preferences | [references/02-configurable-preferences.md](references/02-configurable-preferences.md) |
 | Companion Skills | [references/03-companion-skills.md](references/03-companion-skills.md) |
 | The Workflow Phases | [references/04-the-workflow-phases.md](references/04-the-workflow-phases.md) |

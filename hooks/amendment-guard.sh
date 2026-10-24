@@ -4,13 +4,13 @@
 # Blocked: changing or deleting an existing "### A<n>" entry, or removing the "## Amendment Log" section.
 # Needs node to parse the payload; without it the hook allows the edit and says so (the written rule still binds).
 input="$(cat)"
-case "$input" in *docs/plans/active/*|*docs\\\\plans\\\\active\\\\*) ;; *) exit 0 ;; esac
+case "$input" in *active*) ;; *) exit 0 ;; esac   # cheap pre-filter; the real path check is below, after normalising
 command -v node >/dev/null 2>&1 || { echo "amendment-guard: node not found, Amendment Log not checked." >&2; exit 0; }
 
 printf '%s' "$input" | node -e '
 const fs = require("fs");
 const p = JSON.parse(fs.readFileSync(0, "utf8")), t = p.tool_input || {};
-const file = (t.file_path || "").replace(/\\/g, "/");
+const file = require("path").posix.normalize((t.file_path || "").replace(/\\/g, "/"));
 const m = file.match(/(?:^|\/)(docs\/plans\/active\/[^/]+\.md)$/);
 if (!m) process.exit(0);
 // An absolute path in another shell dialect (e.g. /tmp under Git Bash) may not resolve; the cwd-relative one does.

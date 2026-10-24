@@ -1,6 +1,6 @@
 # Philosophy
 
-*Why the Structured Agentic Development Workflow is shaped the way it is.*
+*Why this workflow is shaped the way it is.*
 
 This is the "why" document. For the mechanics, see [workflow.md](workflow.md); for the
 model split, see [multi-model.md](multi-model.md).
